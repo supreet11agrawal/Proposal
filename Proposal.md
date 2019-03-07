@@ -1,12 +1,12 @@
 # GSoC 2019 proposal Supreet Agrawal
 ## Title
-***
+
 #### Sympy: Implementing Stochastic Processes
 ## Abstract
-***
+
 Sympy is a Comuputer Algebra System
 ## About Me
-***
+
 ### Personal
 
 __Name__ : Supreet Agrawal
