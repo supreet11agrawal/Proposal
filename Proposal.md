@@ -3,8 +3,11 @@
 
 #### Sympy: Implementing Stochastic Processes
 ## Abstract
+Sympy, being a Computer Algebra System, offers great functionality and extensive support for symbolic computing. Probability and Statistics has importance which has been recognised in most, if not all areas of science. SymPy implements univariate probability spaces in great detail, but spaces involving multiple random variables are not implemented with much detail and random processes are not implemented at all.
 
-Sympy is a Comuputer Algebra System
+As a CAS, it is essential that Sympy provides more support in the field of Probability and Statistics. One of the major fields in Probability is Stochastic Processes which have applications in various ranging from basic sciences to cryptography, signal processing and even financial markets.
+
+My work in Sympy during summer would be to extend the support for multivariate distributions and introduce Stochastic Processes in Sympy.
 ## About Me
 
 ### Personal
@@ -48,20 +51,29 @@ Some of these being :
 * [Python Functions, Files, and Dictionaries](https://www.coursera.org/learn/python-functions-files-dictionaries/home/welcome)
 * [Graph Search, Shortest Paths, and Data Structures](https://www.coursera.org/learn/algorithms-graphs-data-structures)
 
-As I have mentioned above, my coursework in Probability and Statistics helped me learn a lot in the field and will help me directly in the Summer of Code project.
+As I have mentioned above, my coursework in Probability and Statistics helped me learn a lot in the field and will bring help to me directly in the Summer of Code project.
 
 I was introduced to Python two years ago. However, I am relatively new in terms of object oriented programming. Prior to working in Python, my programming experience was confined to C and C++. In comparison to these languages, Python is much more intuitive. In my opinion, Python is more expressive than any other language I have used. According to me, list comprehension is one of the best features which I have used.
 
 My favourite feature about Sympy is it's ability to compute asymptotic series expansions of functions around a point. I came across this feature while getting acquainted with the library. Sympy's ability to compute series expansions left me awestruck and was one of the primary reasons that inspired me to learn more about Sympy.
 ```
->>> x = Symbol('x')
->>> t = Symbol('t')
->>> pprint(log(x-t).series(x), use_unicode = False)
-    5      4      3      2                       
-   x      x      x      x     x              / 6\
-- ---- - ---- - ---- - ---- - - + log(-t) + O\x /
-     5      4      3      2   t                  
-  5*t    4*t    3*t    2*t                       
+>>> x, n, t = symbols('x n t')
+>>> pprint(log(x-t).series(x, x0 =t/n))
+                                2                              3                                           4                                                           5                        
+                ⎛    t⎞          2 ⎛    t⎞                      3 ⎛    t⎞                                   4 ⎛    t⎞                                                   5 ⎛    t⎞                         
+              n⋅⎜x - ─⎟         n ⋅⎜x - ─⎟                     n ⋅⎜x - ─⎟                                3⋅n ⋅⎜x - ─⎟                                               12⋅n ⋅⎜x - ─⎟                         
+   ⎛     t⎞     ⎝    n⎠            ⎝    n⎠                        ⎝    n⎠                                     ⎝    n⎠                                                     ⎝    n⎠                         
+log⎜-t + ─⎟ - ───────── - ─────────────────────── - ───────────────────────────────── - ──────────────────────────────────────────────── - ───────────────────────────────────────────────────────────────
+   ⎝     n⎠    n⋅t - t      ⎛ 2  2        2    2⎞      3  3      2  3        3      3       4  4       3  4       2  4         4       4       5  5        4  5        3  5        2  5          5       5
+                          2⋅⎝n ⋅t  - 2⋅n⋅t  + t ⎠   3⋅n ⋅t  - 9⋅n ⋅t  + 9⋅n⋅t  - 3⋅t    12⋅n ⋅t  - 48⋅n ⋅t  + 72⋅n ⋅t  - 48⋅n⋅t  + 12⋅t    60⋅n ⋅t  - 300⋅n ⋅t  + 600⋅n ⋅t  - 600⋅n ⋅t  + 300⋅n⋅t  - 60⋅t 
+
+                     
+                     
+    ⎛       6       ⎞
+    ⎜⎛    t⎞       t⎟
+ + O⎜⎜x - ─⎟ ; x → ─⎟
+    ⎝⎝    n⎠       n⎠
+
 
 ```
 I am fairly comfortable with Git and Github as I have been using these over the past months for contributing to Sympy and otherwise.
@@ -70,13 +82,13 @@ I am fairly comfortable with Git and Github as I have been using these over the 
 ### Pull requests
 The following are the lists of merged/open pull requests I have created(listed in chronological order)
 
-* [#15841](https://github.com/sympy/sympy/pull/15841) Numbers: Removed the redundant checks of igcd method and simplified it
-* [#15958](https://github.com/sympy/sympy/pull/15958) Stats: Disabled non valid probability inputs by Bernoulli, Coin and FiniteRV distibutions
-* [#16093](https://github.com/sympy/sympy/pull/16093) Core: Improved handling of Unicode text
-* [#16108](https://github.com/sympy/sympy/pull/16108) Stats:Improved parameter handling by Benini distribution
-* [#16154](https://github.com/sympy/sympy/pull/16154) Travis: Added a flag which reduced the output log so compilation errors could be found easily (This PR used [#16156]() for testing the correctness of change)
-* [#16159](https://github.com/sympy/sympy/pull/16159) Stats: Improved parameter handling and documentation of continuous distributions
-* [#16183](https://github.com/sympy/sympy/pull/16183) Stats: Completed the parameter handling improvement by continuous distributions 
+* [#15841](https://github.com/sympy/sympy/pull/15841) Numbers: Removed the redundant checks of igcd method and simplified it.
+* [#15958](https://github.com/sympy/sympy/pull/15958) Stats: Disabled non valid probability inputs by Bernoulli, Coin and FiniteRV distibutions.
+* [#16093](https://github.com/sympy/sympy/pull/16093) Core: Improved handling of Unicode text.
+* [#16108](https://github.com/sympy/sympy/pull/16108) Stats:Improved parameter handling by Benini distribution.
+* [#16154](https://github.com/sympy/sympy/pull/16154) Travis: Added a flag which reduced the output log so compilation errors could be found easily. (This PR used [#16156]() for testing the correctness of change)
+* [#16159](https://github.com/sympy/sympy/pull/16159) Stats: Improved parameter handling and documentation of continuous distributions.
+* [#16183](https://github.com/sympy/sympy/pull/16183) Stats: Completed the parameter handling improvement by continuous distributions.
 * [#16189](https://github.com/sympy/sympy/pull/16189) Core: Added a function `unchanged` which checks if the expression remains unchanged.
 ### Issues opened
 The following are the list of the issues opened by me(listed in chronological order)
