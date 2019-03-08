@@ -29,7 +29,7 @@ __Email Id__ :
 
 I am a third year undergraduate student of Chemical Engineering at Indian Institute of Technology, Kanpur, India
 
-I am using Ubuntu 18.04 (LTS), and Atom for writing all of my code. I am using this setup for last 3 years and in this duration I have become quite comfortable with it. For the purpose of debugging, I use *pdb*, to which I was introduced via [Kalevi Suominen](https://github.com/jksuom) while working on an issue.
+I am using Ubuntu 18.04 (LTS) and Atom for writing all of my code. I am using this setup for last two years and in this duration I have become quite comfortable with it. For the purpose of debugging, I use *pdb*, to which I was introduced via [Kalevi Suominen](https://github.com/jksuom) while working on an issue.
 
 Despite being a student of Chemical Engineering department, my main interest has always been in Mathematics and Computer Science. Beacuse of this interest I have taken multiple courses in Mathematics department and Computer Science department.
 
@@ -39,6 +39,14 @@ Few of these courses are :
 * Fundamentals of Computing
 * Game Theory and Mechanism Design
 * Computational Methods in Engineering
+
+Apart from these courses, I have audited various MOOCs and Institute Courses to learn more about the filed.
+
+Some of these being :
+* [Computing Laboratory](https://cse.iitk.ac.in/pages/CS251.html)
+* [Divide and Conquer, Sorting and Searching, and Randomized Algorithms](https://www.coursera.org/learn/algorithms-divide-conquer/home/welcome)
+* [Python Functions, Files, and Dictionaries](https://www.coursera.org/learn/python-functions-files-dictionaries/home/welcome)
+* [Graph Search, Shortest Paths, and Data Structures](https://www.coursera.org/learn/algorithms-graphs-data-structures)
 
 As I have mentioned above, my coursework in Probability and Statistics helped me learn a lot in the field and will help me directly in the Summer of Code project.
 
