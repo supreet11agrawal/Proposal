@@ -78,6 +78,46 @@ log⎜-t + ─⎟ - ───────── - ──────────
 ```
 I am fairly comfortable with Git and Github as I have been using these over the past months for contributing to Sympy and otherwise.
 # Add project details
+## The Project
+### Motivation
+My main motivation towards this project is my interest in the field of probability and statistics. Through this project I would like to improve my grasp on the field and work on implementing this important part of the field of probability on a wide scale platform.
+### Implementation Plans
+As implementing stochastic processes will not be an easy task; I would like to break the process into smaller parts which will help me provide a better insight to solve the problems that remain.
+
+I would like to break the period into 5 stages 
+
+#### Stage 1
+---
+Implementing basic probabilistic functions such as `mean`, `median` and `mode`.
+Currently Sympy does not offer support for finding these averages. I would like to implement these basic functions before moving further as these are one of the most basic yet important values when it comes to Statistics.
+
+__Mean__
+
+It can be viewed simply as `E(X)`.
+
+__Median__
+
+This can be calculated by using something like `min(solveset(Eq(cdf(X)(z), S.Half), z, domain = S.Reals)`
+
+__Mode__
+
+This can be viewed something like `z` for which `density(X)(z) == max(density(X)(x))`
+
+__Theoretical Research__
+
+In this period I would like to brush up the concepts of Stochastic processes and work on developing a basic methodology for implementing them in Sympy.
+
+#### Stage 2
+---
+
+Implementing multivariate distributions will help me understand more how I should implement stochastic processes. In this period I would like to introduce a few more multivariate distributions to Sympy.
+
+In this period, I would also like to work upon [`JointRV`](https://github.com/sympy/sympy/blob/master/sympy/stats/joint_rv_types.py#L22). As of now, the set for each component for a `JointRV` is equal to the set of all integers, which can not be changed. I will try to add support for custom sets which will be provided by the user.
+
+
+### TimeLine
+### Time Commitments
+### Post GSOC period
 ## Contributions to Sympy
 ### Pull requests
 The following are the lists of merged/open pull requests I have created(listed in chronological order)
