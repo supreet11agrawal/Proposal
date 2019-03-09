@@ -101,7 +101,7 @@ This can be calculated by using something like `min(solveset(Eq(cdf(X)(z), S.Hal
 
 __Mode__
 
-This can be viewed something like `z` for which `density(X)(z) == max(density(X)(x))`
+This can be viewed something like `z` for which `density(X)(z) == max(density(X)(x))`. This can also be implemented by checking `min` of `solveset(Eq(density(X)(z).diff(z)))` which satisfies `density(X)(z).diff(z, 2) < 0`. However, this method won't be able to find mode for distributions which have mode as global maxima, for example Exponential Distribution. For suvh distrbutions, former method might be more useful.
 
 __Theoretical Research__
 
@@ -113,6 +113,13 @@ In this period I would like to brush up the concepts of Stochastic processes and
 Implementing multivariate distributions will help me understand more how I should implement stochastic processes. In this period I would like to introduce a few more multivariate distributions to Sympy.
 
 In this period, I would also like to work upon [`JointRV`](https://github.com/sympy/sympy/blob/master/sympy/stats/joint_rv_types.py#L22). As of now, the set for each component for a `JointRV` is equal to the set of all integers, which can not be changed. I will try to add support for custom sets which will be provided by the user.
+
+#### Stage 3
+---
+
+I would start working on stochastic distributions in this period. A new file `stochastic.py` will contain all the different types of stochastic processes.
+
+For each different process, there will be a different class which stores different information related to the process in form of objects. I will start off with Random Walks during this stage.
 
 
 ### TimeLine
