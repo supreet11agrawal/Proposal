@@ -143,6 +143,7 @@ The following are the list of the issues opened by me(listed in chronological or
 * [#15903](https://github.com/sympy/sympy/issues/15903) Stats: Non valid probability allowed by Finite Distributions resulting in wrong results
 * [#15904](https://github.com/sympy/sympy/issues/15904) Stats: Finite Distributions were not added to Sympy docs
 * [#16107](https://github.com/sympy/sympy/issues/16107) Stats: Non valid parameters were allowed by continuous distributions
+* [#16215](https://github.com/sympy/sympy/issues/16215) Core: Enhancing `unchanged` function to work for expressions like `exp(x)*exp(y)`
 ### Code Reviews
 Code reviewing is one of the important tasks which helps new contributors learn more about Sympy. Though I was unable to find any major changes in the pull requests made by other contributors, I am trying my nest to help as much as I can.
 * [#16096](https://github.com/sympy/sympy/pull/16096#pullrequestreview-208620762) Suggested a fellow contributor [Divyanshu Thakur](https://github.com/divyanshu132) to add test cases for checking if Unicode test was handled properly.
