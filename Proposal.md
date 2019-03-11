@@ -119,8 +119,33 @@ In this period, I would also like to work upon [`JointRV`](https://github.com/sy
 
 I would start working on stochastic distributions in this period. A new file `stochastic.py` will contain all the different types of stochastic processes.
 
-For each different process, there will be a different class which stores different information related to the process in form of objects. I will start off with Random Walks during this stage.
+For each different process, there will be a different class which stores different information related to the process in form of objects. I will start off with Markov chains during this stage.
 
+The problems which will be addressed by the class `MarkovChain` will be as follows:
+ * To find the state matrix after any general number of steps, say `t`
+ * To find the Stationary Matrix
+ * To find the Limiting Matrix (For Absorbing Markov Chain)
+ * To find the Fundamental Matrix (For Absorbing Markov Chain)
+ * More properties related to Fundamental Matrix (If time permits):
+   * Expected number of steps before being absorbed
+   * Variance on the number of steps before being absorbed
+   * Probability of visiting a transient state
+   * Probability of being absorbed in an absorbing state
+The user will give the initial state in form of a row matrix. A square transition matrix will also be provided by the user.
+
+The class MarkovChain will be as follows:
+```
+class MarkovChain(Basic):
+    def __new__(state0, transition):
+        sum(a) != 1 results in error
+        transition is not len(a)*len(a) matrix results in error
+        for j in range(len(a)):
+            if sum transition[j] != 1:
+                ValueError
+    def state(self, t):
+        # We can do this by using either state0*transition**t or using a loop multiplying state matrix continuously with transition
+        # I would prefer loop as it will take something like O(t*n**2) complexity and former method will have O(t*n**3) complexity
+```
 
 ### TimeLine
 ### Time Commitments
