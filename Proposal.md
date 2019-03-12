@@ -136,20 +136,41 @@ The user will give the initial state in form of a row matrix. A square transitio
 The class MarkovChain will be as follows:
 ```
 class MarkovChain(Basic):
-    def __new__(state0, transition):
+    def __new__(transition, state0 = None): #None if the user needs just properties related to Transition matrix
         sum(a) != 1 results in error
         transition is not len(a)*len(a) matrix results in error
         for j in range(len(a)):
             if sum transition[j] != 1:
                 ValueError
     def state(self, t):
+        return state0*transition**t
         # We can do this by using either state0*transition**t or using a loop multiplying state matrix continuously with transition
         # I would prefer loop as it will take something like O(t*n**2) complexity and former method will have O(t*n**3) complexity
+    def stationary(self):
+        # Can be implemented by recursively substitution of variables
+        # For eg. [x1 x2]*[[a b][c d]] can be solved by 1st eqn x2 = 1-x1; x1*a + x2*c = x1. Hence x1*a + (1-x1)*c = x1
+        # For a general case crude implementation is shown below
+        temp = []
+        for i in range(len(state0)):
+            temp.append(Indexed('x', i))
+        Ask about this from Kalevi Suominen
+    def limiting(self)
 ```
 
 ### TimeLine
 ### Time Commitments
+Before Summer, time spent on Sympy may vary depending on the academic activities. Mostly it will be 3-4 hours a day.
+* __Working Hours__: 18:00-23:00 IST or 12:30-17:30 UTC
+
+During Summer, on an average, I would be able to spend 7-8 hrs working on GSoC project daily; summing up to 50-60 hours per week
+* __Working Hours__: 13:00-23:00 IST or 07:30-17:30 UTC
+
+After Summer, as it will be beginning of new semester, I will be able to spend relatively more time on Sympy. On an average, I will work for 5-6 hours per day.
+* __Working Hours__: Will vary according to college timetable. 
 ### Post GSOC period
+I would like to continue my work on stats module and work on introducing new Stochastic Processes. I would also work upon exporting random variables to other libraries.
+
+I will work upon a new module 
 ## Contributions to Sympy
 ### Pull requests
 The following are the lists of merged/open pull requests I have created(listed in chronological order)
