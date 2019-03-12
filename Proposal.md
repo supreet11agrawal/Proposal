@@ -154,10 +154,17 @@ class MarkovChain(Basic):
         for i in range(len(state0)):
             temp.append(Indexed('x', i))
         Ask about this from Kalevi Suominen
-    def limiting(self)
+    def limiting(self):
+    
+    def fundamental():
 ```
+#### Stage 4
+---
+
+I would start working on implementation of Random Walks during this period. Talking in a generalised way, the user will give the Degree of Graph and the probabilities list.
 
 ### TimeLine
+
 ### Time Commitments
 Before Summer, time spent on Sympy may vary depending on the academic activities. Mostly it will be 3-4 hours a day.
 * __Working Hours__: 18:00-23:00 IST or 12:30-17:30 UTC
@@ -170,7 +177,6 @@ After Summer, as it will be beginning of new semester, I will be able to spend r
 ### Post GSOC period
 I would like to continue my work on stats module and work on introducing new Stochastic Processes. I would also work upon exporting random variables to other libraries.
 
-I will work upon a new module 
 ## Contributions to Sympy
 ### Pull requests
 The following are the lists of merged/open pull requests I have created(listed in chronological order)
@@ -191,6 +197,7 @@ The following are the list of the issues opened by me(listed in chronological or
 * [#15904](https://github.com/sympy/sympy/issues/15904) Stats: Finite Distributions were not added to Sympy docs
 * [#16107](https://github.com/sympy/sympy/issues/16107) Stats: Non valid parameters were allowed by continuous distributions
 * [#16215](https://github.com/sympy/sympy/issues/16215) Core: Enhancing `unchanged` function to work for expressions like `exp(x)*exp(y)`
+* [#16239](https://github.com/sympy/sympy/issues/16239) Functions: Sympy not able to evaluate Global maximum and maxima of a function
 ### Code Reviews
 Code reviewing is one of the important tasks which helps new contributors learn more about Sympy. Though I was unable to find any major changes in the pull requests made by other contributors, I am trying my nest to help as much as I can.
 * [#16096](https://github.com/sympy/sympy/pull/16096#pullrequestreview-208620762) Suggested a fellow contributor [Divyanshu Thakur](https://github.com/divyanshu132) to add test cases for checking if Unicode test was handled properly.
