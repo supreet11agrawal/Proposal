@@ -77,7 +77,7 @@ log⎜-t + ─⎟ - ───────── - ──────────
 
 ```
 I am fairly comfortable with Git and Github as I have been using these over the past months for contributing to Sympy and otherwise.
-# Add project details
+
 ## The Project
 ### Motivation
 My main motivation towards this project is my interest in the field of probability and statistics. Through this project I would like to improve my grasp on the field and work on implementing this important part of the field of probability on a wide scale platform.
@@ -133,37 +133,168 @@ The problems which will be addressed by the class `MarkovChain` will be as follo
    * Probability of being absorbed in an absorbing state
 The user will give the initial state in form of a row matrix. A square transition matrix will also be provided by the user.
 
-The class MarkovChain will be as follows:
+Crude functioning of class MarkovChain will be as follows:
 ```
 class MarkovChain(Basic):
     def __new__(transition, state0 = None): #None if the user needs just properties related to Transition matrix
-        sum(a) != 1 results in error
-        transition is not len(a)*len(a) matrix results in error
+        if state0 != None and not (isinstance(state0, Matrix)):
+            raise ValueError()
+        if not isinstance(transition, Matrix):
+            raise ValueError()
+        if sum(a) != 1:
+            raise ValueError()
+        # transition is not len(a)*len(a) matrix results in error
         for j in range(len(a)):
             if sum transition[j] != 1:
-                ValueError
+                raise ValueError()
     def state(self, t):
         return state0*transition**t
         # We can do this by using either state0*transition**t or using a loop multiplying state matrix continuously with transition
         # I would prefer loop as it will take something like O(t*n**2) complexity and former method will have O(t*n**3) complexity
     def stationary(self):
-        # Can be implemented by recursively substitution of variables
-        # For eg. [x1 x2]*[[a b][c d]] can be solved by 1st eqn x2 = 1-x1; x1*a + x2*c = x1. Hence x1*a + (1-x1)*c = x1
-        # For a general case crude implementation is shown below
-        temp = []
-        for i in range(len(state0)):
-            temp.append(Indexed('x', i))
-        Ask about this from Kalevi Suominen
-    def limiting(self):
-    
+        temp = transition.T
+        a = max(temp.eigenvects())[2][0]
+        return a/sum(a)
     def fundamental():
+        temp = transition
+        flag = 0
+        arr = []
+        for i in range(len(temp)):
+            if temp[i][i] == 1:
+                flag = 1
+                arr.append(i)
+        if flag != 1:
+            return ValueError()
+        else:
+            for i in len(temp):
+                temp[i].pop(arr(i))
+                temp.pop(arr(i))
+                for j in range(len(arr)):
+                    arr[j] = arr[j]-1
+            return (eye(len(temp))-temp)**-1
 ```
 #### Stage 4
 ---
 
-I would start working on implementation of Random Walks during this period. Talking in a generalised way, the user will give the Degree of Graph and the probabilities list.
+I would start working on implementation of Random Walks during this period. The first problem that I would like to mention here is that Sympy is not a simulation software, as told by [Mr. Fransesco Bonazzi](https://github.com/Upabjojr). I totally agree and thus think that we cannot implement a simulation of Random Walk and tell user the path taken for a particular case. I have listed below the functionalities I think Sympy's Random Walk classes can have. Furthur improvements will be made with the help of mentor.
+
+As solving for any general degree of graph is quite complicated and they are not used that often, I would start with Simple Random Walks as they are most basic and useful. After that 1D, 2D random walks will be implemented. If time permits then it can also be implemented for a graph of any general `n` degrees.
+
+__Simple Random Walk__
+
+Questions addressed in this class can be listed as:
+* Probability that the position is `d`(`d` is the distance from the starting point in a fixed direction) after `N`steps
+* Any general `t`th order of moment of distribution
+* Mean of distribution
+* Skewness
+* Kurtosis
+* Expected value of being at an absolute distance `d` after `N` steps
+
+A crude prototype for implementation of Simple Random Walk is as follows:
+
+```
+class SimpleRandomWalk(Basic):
+    def position(d, N):
+        if ((N-d)%2 != 0):
+            return 0
+        else:
+            return binomial(N, d)/2**N
+    def moment(t, N):
+        d = Symbol('d', real = True)
+        return summation((d**t)*position(d, N), (d, -N, N))
+    def mean():
+        return 0
+    def skewness():
+        return 0
+    def kurtosis(N):
+        return (-2)/N
+    def expectedPosition(N):
+        return summation(Abs(d)*position(d, N), (d, -N, N))
+    
+```
+
+__1D Random Walk__ implemented in Sympy will work as follows:
+* The user will give `p`; the probability to take a step to the right; as an input
+* The user can ask for questions such as
+  * After any general `N` steps, the probability of being at a fixed point(`s` steps from the original point in a fixed direction)
+  * The probability of taking a particular order of steps(i.e. `n1` steps to the right and `n2` steps to the left)
+  * If `N` steps walked, then
+    * Expected number of steps to the right
+    * Expected number of steps to the left
+    * Variance
+    * Standard deviation
+
+Following is the crude prototype for 1D Random Walk:
+
+```
+class OneDRandomWalk(Basic):
+    def position(self, d, N):
+        if (N-d)%2 != 0:
+            return 0
+        else:
+            return binomial(N, (d+N)/2)*self.p**((N+d)/2)*selfq**((N-d)/2)
+    def expectedRight(self, p, N):
+        return self.p*N
+    def expectedLeft(self, N):
+        return self.q*N
+    def variance(self, N):
+        return N*self.p*self.q
+    def std(self, N):
+        return sqrt(variance(N))
+```
+
+__2D Random Walk__
+
+
 
 ### TimeLine
+
+My semester will end on 30th April; hence I am not including the time before 30th April, 2019 in the timeline. In this period, however, I would like to work on stats module and stay ahead of timeline.
+
+Listed below is the tentative timeline I would follow:
+
+__Pre Selection Period + Community Bonding Period__
+***
+__May 1 - May 27__
+
+The goal in this period would be to
+* Get to know my mentor and other organisation members well, and get a clear idea of the workflow during the project.
+* Brush up of concepts involved
+* Completion of Stage 1
+* Discuss better way of implementation and the possibilities of extending Stochastic processes
+
+__The Coding Begins__
+***
+__May 27 - May 31__
+
+Buffer Period : Completion of the remaining work and documentation improvement before moving to stage 2
+
+__May 31 - June 20__
+
+Add support 
+
+__June 20 - June 24__
+
+Buffer Period : Completion of the remaining work and documentation improvement before Phase 1 Evaluation
+
+__Phase 1 Evaluation__
+***
+__June 24 - July 15__
+
+__July 15 - July 22__
+
+Buffer Period : Completion of the remaining work and documentation improvement before Phase 2 Evaluation
+
+__Phase 2 Evaluation__
+***
+__July 22 - August 12__
+
+__August 12 - August 26__
+
+* Buffer Period : Completion of any backlog and documentation improvement before marking the completion of project
+
+* Final Report Submission
+
 
 ### Time Commitments
 Before Summer, time spent on Sympy may vary depending on the academic activities. Mostly it will be 3-4 hours a day.
