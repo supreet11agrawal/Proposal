@@ -84,7 +84,7 @@ My main motivation towards this project is my interest in the field of probabili
 ### Implementation Plans
 As implementing stochastic processes will not be an easy task; I would like to break the process into smaller parts which will help me provide a better insight to solve the problems that remain.
 
-I would like to break the period into 5 stages 
+I would like to break the period into 4 stages 
 
 #### Stage 1
 ---
@@ -275,8 +275,16 @@ class OneDRandomWalk(Basic):
 ```
 
 __2D Random Walk__
+This will be more complicated to implement as compared to others. Keeping end users in mind, it will be better to implement a robust symmetric 2D random walk as compared to a slaggy and unnecessarily complicated 2D random walk functionality.
 
+Thus, my primary focus will be to implement symmetric 2D random walks and then move forward with unsymmetric part.
 
+Functionalities planned to be implemented for 2D random walk are listed below:
+* Probability of coming back at the origin after the `N` steps
+* Expected distance after `N` steps
+* Expected number of steps taken to move to a distance `d` from origin
+
+In this period, implementation of Stochastic Rrocesses such as Bernoulli Process and Poisson Process will also be attemptted. However, considering the complexity of such processes and limited amount of time I have not included them in this timeline. I will continue to Work on them after GSoC.
 
 ### TimeLine
 
@@ -329,6 +337,7 @@ __July 8 - July 15__ _(Week 7)_
 
 * Adding test cases of Markov Chains
 * Start on implementation of Simple Random Walk
+* Completion of Stage 3
 
 __July 15 - July 22__ _(Week 8)_
 
@@ -348,6 +357,7 @@ __August 5 - August 12__ _(Week 11)_
 
 * Adding test cases and improvements to 2D random walks
 * Discussion with mentor regarding future work and further possiblities of adding more processes including continuous time processes
+* Completion of Stage 4
 
 __August 12 - August 26__ _(Week 12, 13)_
 
@@ -404,3 +414,4 @@ Code reviewing is one of the important tasks which helps new contributors learn 
 * [Past year proposals](https://github.com/sympy/sympy/wiki/GSoC-2018-Current-Applications)
 * [Wikipedia](https://www.wikipedia.org/)
 * [Wolfram Mathworld](http://mathworld.wolfram.com)
+* [Stack Exchange](https://math.stackexchange.com)
