@@ -76,7 +76,7 @@ log⎜-t + ─⎟ - ───────── - ──────────
 
 
 ```
-I am fairly comfortable with Git and Github as I have been using these over the past months for contributing to Sympy and otherwise.
+I am fairly comfortable with Git and Github as they were part of the course curriculum of one of the courses I audited. I have been using these over the past months for contributing to Sympy and otherwise making me quite comfortable with them.
 
 ## The Project
 ### Motivation
@@ -89,7 +89,7 @@ I would like to break the period into 4 stages
 #### Stage 1
 ---
 Implementing basic probabilistic functions such as `mean`, `median` and `mode`.
-Currently Sympy does not offer support for finding these averages. I would like to implement these basic functions before moving further as these are one of the most basic yet important values when it comes to Statistics.
+Currently Sympy does not offer support for finding these averages. I would like to implement these basic functions before moving further as these are one of the most basic yet important average values when it comes to Statistics.
 
 __Mean__
 
@@ -101,7 +101,7 @@ This can be calculated by using something like `min(solveset(Eq(cdf(X)(z), S.Hal
 
 __Mode__
 
-This can be viewed something like `z` for which `density(X)(z) == max(density(X)(x))`. This can also be implemented by checking `min` of `solveset(Eq(density(X)(z).diff(z)))` which satisfies `density(X)(z).diff(z, 2) < 0`. However, this method won't be able to find mode for distributions which have mode as global maxima, for example Exponential Distribution. For suvh distrbutions, former method might be more useful.
+This can be viewed something like `z` for which `density(X)(z) == max(density(X)(x))`. This can also be implemented by checking `min` of `solveset(Eq(density(X)(z).diff(z)))` which satisfies `density(X)(z).diff(z, 2) < 0`. However, this method won't be able to find mode for distributions which have mode as global maxima, for example Exponential Distribution. For suvh distrbutions, former method might be more useful. Currently, finding global maximum and maxima of a function is not possible in Sympy. To address this issue, I opened [Issue #16239](https://github.com/sympy/sympy/issues/16239). I wasn't able to work upon the problem beacuse of academic load and making of this proposal. However, I plan on working on this once the proposal is finalized.
 
 __Theoretical Research__
 
@@ -112,7 +112,7 @@ In this period I would like to brush up the concepts of Stochastic processes and
 
 Implementing multivariate distributions will help me understand more how I should implement stochastic processes. In this period I would like to introduce a few more bivariate distributions to Sympy. Right now, I am focusing mainly on bivariate distributions. If time permits, then I would work upon multivariate distributions as well.
 
-In this period, I would also like to work upon [`JointRV`](https://github.com/sympy/sympy/blob/master/sympy/stats/joint_rv_types.py#L22). As of now, the set for each component for a `JointRV` is equal to the set of all integers, which can not be changed. I will try to add support for custom sets which will be provided by the user.
+In this period, I would also like to work upon [`JointRV`](https://github.com/sympy/sympy/blob/master/sympy/stats/joint_rv_types.py#L22). As of now, the set for each component for a `JointRV` is equal to the Real set, which can not be changed. I will try to add support for custom sets which will be provided by the user.
 
 A typical bivavriate distribution will look like:
 ```
@@ -152,6 +152,7 @@ The problems which will be addressed by the class `MarkovChain` will be as follo
    * Variance on the number of steps before being absorbed
    * Probability of visiting a transient state
    * Probability of being absorbed in an absorbing state
+
 The user will give the initial state in form of a row matrix. A square transition matrix will also be provided by the user.
 
 Crude functioning of class MarkovChain will be as follows:
@@ -284,11 +285,11 @@ Functionalities planned to be implemented for 2D random walk are listed below:
 * Expected distance after `N` steps
 * Expected number of steps taken to move to a distance `d` from origin
 
-In this period, implementation of Stochastic Rrocesses such as Bernoulli Process and Poisson Process will also be attemptted. However, considering the complexity of such processes and limited amount of time I have not included them in this timeline. I will continue to Work on them after GSoC.
+In this period, implementation of Stochastic Rrocesses such as Bernoulli Process and Poisson Process will also be attemptted. However, considering the complexity of such processes and limited amount of time; I have not included them in the timeline. I will continue to work on them after GSoC.
 
 ### TimeLine
 
-My semester will end on 30th April; hence I am not including the time before 30th April, 2019 in the timeline. In this period, however, I would like to work on stats module and stay ahead of timeline.
+My semester will end on 30th April; hence I am not including the time before 30th April, 2019 in the timeline. In this period, however, I would like to work on stats module and try to stay ahead of timeline.
 
 Listed below is the tentative timeline I would follow:
 
