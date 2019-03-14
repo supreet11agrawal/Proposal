@@ -116,7 +116,23 @@ In this period, I would also like to work upon [`JointRV`](https://github.com/sy
 
 A typical bivavriate distribution will look like:
 ```
-
+class Distribution(JointDistribution):
+    _argnames = ['arg1', 'arg2']
+    
+    @property
+    def set(self):
+        # set on which the distribution is valid will be defined here
+    
+    @staticmethod
+    def check(self, arg1, arg2):
+        #checking if valid parameters are entered
+        
+    def pdf(self, arg1, arg2):
+        arg1, arg2 = self.arg1, self.arg2
+        # pdf defined
+    def marginal_distribution(self, arg1, arg2):
+        arg1, arg2 = self.arg1, aelf.arg2
+        # marginal distribution defined here
 ```
 
 #### Stage 3
@@ -353,8 +369,11 @@ During Summer, on an average, I would be able to spend 7-8 hrs working on GSoC p
 
 After Summer, as it will be beginning of new semester, I will be able to spend relatively more time on Sympy. On an average, I will work for 5-6 hours per day.
 * __Working Hours__: Will vary according to college timetable. 
+
+Summing up, on an average I would be able to give 40-50 hours per week in the period of GSoC.
+
 ### Post GSOC period
-I would like to continue my work on stats module and work on introducing new Stochastic Processes. I would also work upon exporting random variables to other libraries which has been listed under the project ideas page.
+I would like to continue my work on stats module and work on introducing new Stochastic Processes. I would also work upon exporting expressions of random variables to other libraries which has been listed under the project ideas page.
 
 ## Contributions to Sympy
 ### Pull requests
@@ -380,3 +399,8 @@ The following are the list of the issues opened by me(listed in chronological or
 ### Code Reviews
 Code reviewing is one of the important tasks which helps new contributors learn more about Sympy. Though I was unable to find any major changes in the pull requests made by other contributors, I am trying my nest to help as much as I can.
 * [#16096](https://github.com/sympy/sympy/pull/16096#pullrequestreview-208620762) Suggested a fellow contributor [Divyanshu Thakur](https://github.com/divyanshu132) to add test cases for checking if Unicode test was handled properly.
+
+## References
+* [Past year proposals](https://github.com/sympy/sympy/wiki/GSoC-2018-Current-Applications)
+* [Wikipedia](https://www.wikipedia.org/)
+* [Wolfram Mathworld](http://mathworld.wolfram.com)
