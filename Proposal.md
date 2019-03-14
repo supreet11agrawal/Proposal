@@ -101,7 +101,7 @@ This can be calculated by using something like `min(solveset(Eq(cdf(X)(z), S.Hal
 
 __Mode__
 
-This can be viewed something like `z` for which `density(X)(z) == max(density(X)(x))`. This can also be implemented by checking `min` of `solveset(Eq(density(X)(z).diff(z)))` which satisfies `density(X)(z).diff(z, 2) < 0`. However, this method won't be able to find mode for distributions which have mode as global maxima, for example Exponential Distribution. For suvh distrbutions, former method might be more useful. Currently, finding global maximum and maxima of a function is not possible in Sympy. To address this issue, I opened [Issue #16239](https://github.com/sympy/sympy/issues/16239). I wasn't able to work upon the problem beacuse of academic load and making of this proposal. However, I plan on working on this once the proposal is finalized.
+This can be viewed something like `z` for which `density(X)(z) == max(density(X)(x))`. This can also be implemented by checking `min` of `solveset(Eq(density(X)(z).diff(z)))` which satisfies `density(X)(z).diff(z, 2) < 0`. However, this method won't be able to find mode for distributions which have mode as global maxima, for example Exponential Distribution. For such distributions, former method might be more useful. Currently, finding global maximum and maxima of a function is not possible in Sympy. To address this issue, I opened [Issue #16239](https://github.com/sympy/sympy/issues/16239). I wasn't able to work upon the problem because of academic load and making of this proposal. However, I plan on working on this once the proposal is finalized.
 
 __Theoretical Research__
 
