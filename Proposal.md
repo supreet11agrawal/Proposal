@@ -1,13 +1,13 @@
 # GSoC 2019 proposal Supreet Agrawal
 ## Title
 
-#### Sympy: Implementing Stochastic Processes
+#### Sympy: Implementing Stochastic Processes and Extending Bivariate Distributions
 ## Abstract
 Sympy, being a Computer Algebra System, offers great functionality and extensive support for symbolic computing. Probability and Statistics has importance which has been recognised in most, if not all areas of science. SymPy implements univariate probability spaces in great detail, but spaces involving multiple random variables are not implemented with much detail and random processes are not implemented at all.
 
 As a CAS, it is essential that Sympy provides more support in the field of Probability and Statistics. One of the major fields in Probability is Stochastic Processes which have applications in various ranging from basic sciences to cryptography, signal processing and even financial markets.
 
-My work in Sympy during summer would be to extend the support for multivariate distributions and introduce Stochastic Processes in Sympy.
+My work in Sympy during summer would be to extend the support for bivariate distributions and introduce Stochastic Processes in Sympy.
 ## About Me
 
 ### Personal
@@ -110,9 +110,14 @@ In this period I would like to brush up the concepts of Stochastic processes and
 #### Stage 2
 ---
 
-Implementing multivariate distributions will help me understand more how I should implement stochastic processes. In this period I would like to introduce a few more multivariate distributions to Sympy.
+Implementing multivariate distributions will help me understand more how I should implement stochastic processes. In this period I would like to introduce a few more bivariate distributions to Sympy. Right now, I am focusing mainly on bivariate distributions. If time permits, then I would work upon multivariate distributions as well.
 
 In this period, I would also like to work upon [`JointRV`](https://github.com/sympy/sympy/blob/master/sympy/stats/joint_rv_types.py#L22). As of now, the set for each component for a `JointRV` is equal to the set of all integers, which can not be changed. I will try to add support for custom sets which will be provided by the user.
+
+A typical bivavriate distribution will look like:
+```
+
+```
 
 #### Stage 3
 ---
@@ -147,16 +152,26 @@ class MarkovChain(Basic):
         for j in range(len(a)):
             if sum transition[j] != 1:
                 raise ValueError()
+    
+    def init(self):
+        return self.args[1]
+    
+    def trans(self):
+        return self.args[0]
+   
     def state(self, t):
-        return state0*transition**t
+        if self.init != None
+            return self.init()*self.trans()**t
         # We can do this by using either state0*transition**t or using a loop multiplying state matrix continuously with transition
         # I would prefer loop as it will take something like O(t*n**2) complexity and former method will have O(t*n**3) complexity
+    
     def stationary(self):
-        temp = transition.T
+        temp = self.trans().T
         a = max(temp.eigenvects())[2][0]
         return a/sum(a)
-    def fundamental():
-        temp = transition
+    
+    def fundamental(self):
+        temp = self.trans()
         flag = 0
         arr = []
         for i in range(len(temp)):
@@ -253,8 +268,10 @@ My semester will end on 30th April; hence I am not including the time before 30t
 
 Listed below is the tentative timeline I would follow:
 
+***
 __Pre Selection Period + Community Bonding Period__
 ***
+
 __May 1 - May 27__
 
 The goal in this period would be to
@@ -263,41 +280,72 @@ The goal in this period would be to
 * Completion of Stage 1
 * Discuss better way of implementation and the possibilities of extending Stochastic processes
 
-__The Coding Begins__
 ***
-__May 27 - May 31__
+__The Coding Period__
+***
 
-Buffer Period : Completion of the remaining work and documentation improvement before moving to stage 2
+__May 27 - May 31__ _(Week 1)_
 
-__May 31 - June 20__
+* Work on including custom set support in joint distributions
+* Buffer Period : Completion of the remaining work and documentation improvement before moving to stage 2
 
-Add support 
+__May 31 - June 20__ _(Week 2, 3)_
 
-__June 20 - June 24__
+* Add more bivariate continuous distributions to Sympy and add test cases for them
+* Study about other possible Stochastic processes which can be implemented in Sympy
+* Completion of Stage 2
 
-Buffer Period : Completion of the remaining work and documentation improvement before Phase 1 Evaluation
+__June 20 - June 24__ _(Week 4)_
 
+* Start working on implementation of Markov Chains
+* Buffer Period : Completion of the remaining work and documentation improvement before Phase 1 Evaluation
+
+***
 __Phase 1 Evaluation__
 ***
-__June 24 - July 15__
 
-__July 15 - July 22__
+__June 24 - July 8__ _(Week 5, 6)_
 
-Buffer Period : Completion of the remaining work and documentation improvement before Phase 2 Evaluation
+* Continue with Markov Chain implementation in Sympy
+* Theoretical research and start working on implementation of other stochastic processes
 
+__July 8 - July 15__ _(Week 7)_
+
+* Adding test cases of Markov Chains
+* Start on implementation of Simple Random Walk
+
+__July 15 - July 22__ _(Week 8)_
+
+* Adding test cases for Simple Random Walk and checking for vulnerabilities and thus improvement
+* Buffer Period : Completion of the remaining work and documentation improvement before Phase 2 Evaluation
+
+***
 __Phase 2 Evaluation__
 ***
-__July 22 - August 12__
 
-__August 12 - August 26__
+__July 22 - August 5__ _(Week 9, 10)_
+
+* Implementation of 2D Random Walks in Sympy
+* Start implementing other stochastic processes about which research would have been done previously
+
+__August 5 - August 12__ _(Week 11)_
+
+* Adding test cases and improvements to 2D random walks
+* Discussion with mentor regarding future work and further possiblities of adding more processes including continuous time processes
+
+__August 12 - August 26__ _(Week 12, 13)_
 
 * Buffer Period : Completion of any backlog and documentation improvement before marking the completion of project
-
 * Final Report Submission
 
+***
+__Final Submission__
+***
 
 ### Time Commitments
+
 Before Summer, time spent on Sympy may vary depending on the academic activities. Mostly it will be 3-4 hours a day.
+
 * __Working Hours__: 18:00-23:00 IST or 12:30-17:30 UTC
 
 During Summer, on an average, I would be able to spend 7-8 hrs working on GSoC project daily; summing up to 50-60 hours per week
@@ -306,7 +354,7 @@ During Summer, on an average, I would be able to spend 7-8 hrs working on GSoC p
 After Summer, as it will be beginning of new semester, I will be able to spend relatively more time on Sympy. On an average, I will work for 5-6 hours per day.
 * __Working Hours__: Will vary according to college timetable. 
 ### Post GSOC period
-I would like to continue my work on stats module and work on introducing new Stochastic Processes. I would also work upon exporting random variables to other libraries.
+I would like to continue my work on stats module and work on introducing new Stochastic Processes. I would also work upon exporting random variables to other libraries which has been listed under the project ideas page.
 
 ## Contributions to Sympy
 ### Pull requests
