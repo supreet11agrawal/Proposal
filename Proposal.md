@@ -32,8 +32,6 @@ __Email Id__ :
 
 I am a third year undergraduate student of Chemical Engineering at Indian Institute of Technology, Kanpur, India
 
-I am using Ubuntu 18.04 (LTS) and Atom for writing all of my code. I am using this setup for last two years and in this duration I have become quite comfortable with it. For the purpose of debugging, I use *pdb*, to which I was introduced via [Kalevi Suominen](https://github.com/jksuom) while working on an issue.
-
 Despite being a student of Chemical Engineering department, my main interest has always been in Mathematics and Computer Science. Beacuse of this interest I have taken multiple courses in Mathematics department and Computer Science department.
 
 Few of these courses are :
@@ -52,6 +50,8 @@ Some of these being :
 * [Graph Search, Shortest Paths, and Data Structures](https://www.coursera.org/learn/algorithms-graphs-data-structures)
 
 As I have mentioned above, my coursework in Probability and Statistics helped me learn a lot in the field and will bring help to me directly in the Summer of Code project.
+
+I am using Ubuntu 18.04 (LTS) and Atom for writing all of my code. I am using this setup for last two years and in this duration I have become quite comfortable with it. For the purpose of debugging, I use *pdb*, to which I was introduced via [Kalevi Suominen](https://github.com/jksuom) while working on an issue.
 
 I was introduced to Python two years ago. However, I am relatively new in terms of object oriented programming. Prior to working in Python, my programming experience was confined to C and C++. In comparison to these languages, Python is much more intuitive. In my opinion, Python is more expressive than any other language I have used. According to me, list comprehension is one of the best features which I have used.
 
