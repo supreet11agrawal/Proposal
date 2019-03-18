@@ -95,7 +95,7 @@ Currently, Sympy does not offer support for finding these averages. Mean is supp
 
 __Mean__
 
-It can be viewed simply as `E(X)`.
+It can be viewed simply as `E(X)`. I have started work on this in PR [#16314](https://github.com/sympy/sympy/pull/16314)
 
 __Median__
 
@@ -412,6 +412,7 @@ The following are the lists of merged/open pull requests I have created(listed i
 * [#16189](https://github.com/sympy/sympy/pull/16189) Core: Added a function `unchanged` which checks if the expression remains unchanged.
 * [#16220](https://github.com/sympy/sympy/pull/16220) Core: Replaced redundant checks in `core/tests/test_arit.py`
 * [#16312](https://github.com/sympy/sympy/pull/16312) Stats: F Distribution parameter checking and test cases addition
+* [#16314](https://github.com/sympy/sympy/pull/16314) Stats: Added a function `mean` which can used to calculate arithmetic average
 ### Issues opened
 The following are the list of the issues opened by me(listed in chronological order)
 
@@ -420,6 +421,7 @@ The following are the list of the issues opened by me(listed in chronological or
 * [#16107](https://github.com/sympy/sympy/issues/16107) Stats: Non valid parameters were allowed by continuous distributions
 * [#16215](https://github.com/sympy/sympy/issues/16215) Core: Enhancing `unchanged` function to work for expressions like `exp(x)*exp(y)`
 * [#16239](https://github.com/sympy/sympy/issues/16239) Functions: Sympy not able to evaluate Global maximum and maxima of a function
+
 ### Code Reviews
 Code reviewing is one of the important tasks which helps new contributors learn more about Sympy. Though I was unable to find any major changes in the pull requests made by other contributors, I tried my best to help as much as I can and will continue to do so.
 * [#16096](https://github.com/sympy/sympy/pull/16096#pullrequestreview-208620762) Suggested a fellow contributor to add test cases for checking if Unicode test was handled properly.
