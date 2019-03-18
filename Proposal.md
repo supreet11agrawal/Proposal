@@ -1,4 +1,4 @@
-# GSoC 2019 proposal Supreet Agrawal
+# GSoC 2019 Proposal Supreet Agrawal
 ## Title
 
 #### Sympy: Implementing Stochastic Processes and Extending Bivariate Distributions
@@ -81,15 +81,17 @@ I am fairly comfortable with Git and Github as they were part of the course curr
 ## The Project
 ### Motivation
 My main motivation towards this project is my interest in the field of probability and statistics. Through this project I would like to improve my grasp on the field and work on implementing this important part of the field of probability on a wide scale platform.
+
+I have been working with Sympy for about last 2 months. And in my experience, I haven't seen a better work environment. I was just fascinated by everybody's behaviour and willingness to help each other in the process. In these past 2 months, my knowledge about python and object oriented programming has increased manifold. I would like to continue working on Sympy after the GSoC period as well because of the reasons I mentioned above.
 ### Implementation Plans
 As implementing stochastic processes will not be an easy task; I would like to break the process into smaller parts which will help me provide a better insight to solve the problems that remain.
 
-I would like to break the period into 4 stages 
+I would like to break the period into 4 stages:
 
 #### Stage 1
 ---
 Implementing basic probabilistic functions such as `mean`, `median` and `mode`.
-Currently Sympy does not offer support for finding these averages. I would like to implement these basic functions before moving further as these are one of the most basic yet important average values when it comes to Statistics.
+Currently Sympy does not offer support for finding these averages. Mean is supported in terms of expectation but a standard function `mean` might e more useful to the end users. I would like to implement these basic functions before moving further as these are one of the most basic yet important average values when it comes to Statistics.
 
 __Mean__
 
@@ -97,11 +99,11 @@ It can be viewed simply as `E(X)`.
 
 __Median__
 
-This can be calculated by using something like `min(solveset(Eq(cdf(X)(z), S.Half), z, domain = S.Reals)`
+This can be calculated by using something like `min(solveset(Eq(cdf(X)(z), S.Half), z, domain = S.Reals)` where `X` is the density of a distribution.
 
 __Mode__
 
-This can be viewed something like `z` for which `density(X)(z) == max(density(X)(x))`. This can also be implemented by checking `min` of `solveset(Eq(density(X)(z).diff(z)))` which satisfies `density(X)(z).diff(z, 2) < 0`. However, this method won't be able to find mode for distributions which have mode as global maxima, for example Exponential Distribution. For such distributions, former method might be more useful. Currently, finding global maximum and maxima of a function is not possible in Sympy. To address this issue, I opened [Issue #16239](https://github.com/sympy/sympy/issues/16239). I wasn't able to work upon the problem because of academic load and making of this proposal. However, I plan on working on this once the proposal is finalized.
+This can be viewed something like `z` for which `density(X)(z) == max(density(X)(x))`. This can also be implemented by checking `min` of `solveset(Eq(density(X)(z).diff(z)))` which satisfies `density(X)(z).diff(z, 2) < 0`. However, this method won't be able to find mode for distributions which have mode as global maxima, for example Exponential Distribution. For such distributions, former method might be more useful. Currently, finding global maximum and maxima of a function is not possible in Sympy. I am working on this issue in [#16239](https://github.com/sympy/sympy/issues/16239) and will continue with it once the proposal is finalised.
 
 __Theoretical Research__
 
@@ -209,8 +211,7 @@ class MarkovChain(Basic):
 ---
 
 I would start working on implementation of Random Walks during this period. The first problem that I would like to mention here is that Sympy is not a simulation software, as told by [Mr. Fransesco Bonazzi](https://github.com/Upabjojr). I totally agree and thus think that we cannot implement a simulation of Random Walk and tell user the path taken for a particular case. I have listed below the functionalities I think Sympy's Random Walk classes can have. Furthur improvements will be made with the help of mentor.
-
-As solving for any general degree of graph is quite complicated and they are not used that often, I would start with Simple Random Walks as they are most basic and useful. After that 1D, 2D random walks will be implemented. If time permits then it can also be implemented for a graph of any general `n` degrees.
+I would start with Simple Random Walks as they are most basic and useful. After that 1D random walks(Bernoulli Walk) and 2D random walks will be implemented. If time permits then random walks can also be implemented for a graph of any general `n` degrees.
 
 __Simple Random Walk__
 
@@ -222,7 +223,7 @@ Questions addressed in this class can be listed as:
 * Kurtosis
 * Expected value of being at an absolute distance `d` after `N` steps
 
-A crude prototype for implementation of Simple Random Walk is as follows:
+A crude prototype of class for implementation of Simple Random Walk is as follows:
 
 ```
 class SimpleRandomWalk(Basic):
@@ -256,7 +257,7 @@ __1D Random Walk__ implemented in Sympy will work as follows:
     * Variance
     * Standard deviation
 
-Following is the crude prototype for 1D Random Walk:
+Following is the crude prototype for class of 1D Random Walk:
 
 ```
 class OneDRandomWalk(Basic):
@@ -265,13 +266,13 @@ class OneDRandomWalk(Basic):
             return 0
         else:
             return binomial(N, (d+N)/2)*self.p**((N+d)/2)*selfq**((N-d)/2)
-    def expectedRight(self, p, N):
+    def expectedRight(self, N):
         return self.p*N
     def expectedLeft(self, N):
         return self.q*N
     def variance(self, N):
         return N*self.p*self.q
-    def std(self, N):
+    def std(N):
         return sqrt(variance(N))
 ```
 
@@ -285,7 +286,7 @@ Functionalities planned to be implemented for 2D random walk are listed below:
 * Expected distance after `N` steps
 * Expected number of steps taken to move to a distance `d` from origin
 
-In this period, implementation of Stochastic Rrocesses such as Bernoulli Process and Poisson Process will also be attemptted. However, considering the complexity of such processes and limited amount of time; I have not included them in the timeline. I will continue to work on them after GSoC.
+In this period, implementation of Stochastic Processes continuous in time will also be studied and if possible, implemented. However, considering the complexity of such processes and limited amount of time; I have not included them in the timeline. I will continue to work on them after GSoC.
 
 ### TimeLine
 
@@ -299,11 +300,12 @@ __Pre Selection Period + Community Bonding Period__
 
 __May 1 - May 27__
 
-The goal in this period would be to
+The goal in this period would be to (More goals are set here considering the long period) :
 * Get to know my mentor and other organisation members well, and get a clear idea of the workflow during the project.
-* Brush up of concepts involved
+* Brushing up of concepts involved in the compound distributions
 * Completion of Stage 1
 * Discuss better way of implementation and the possibilities of extending Stochastic processes
+* Brushing up basics of random walks from _Principles of Random Walk by Spitzer F._
 
 ***
 __The Coding Period__
@@ -312,17 +314,20 @@ __The Coding Period__
 __May 27 - May 31__ _(Week 1)_
 
 * Work on including custom set support in joint distributions
+* Theoretical Research on Markov Chains and ways to implement them _from Chapter 1 of Markov Chains by Norris J._
 * Buffer Period : Completion of the remaining work and documentation improvement before moving to stage 2
 
 __May 31 - June 20__ _(Week 2, 3)_
 
 * Add more bivariate continuous distributions to Sympy and add test cases for them
 * Study about other possible Stochastic processes which can be implemented in Sympy
+* Theoretical research on continuous time Markov Chains and discussion of ways to implement them with mentor.
 * Completion of Stage 2
 
 __June 20 - June 24__ _(Week 4)_
 
 * Start working on implementation of Markov Chains
+* Study two dimensional recurrent random walk and the green function associated with it
 * Buffer Period : Completion of the remaining work and documentation improvement before Phase 1 Evaluation
 
 ***
@@ -333,16 +338,19 @@ __June 24 - July 8__ _(Week 5, 6)_
 
 * Continue with Markov Chain implementation in Sympy
 * Theoretical research and start working on implementation of other stochastic processes
+* Discuss and develop ways of implementing a general class for Random walks in Sympy
 
 __July 8 - July 15__ _(Week 7)_
 
 * Adding test cases of Markov Chains
 * Start on implementation of Simple Random Walk
+* Theoretical research on Random Walk on a Half line and discussion with mentor about possibilities of including them in Sympy
 * Completion of Stage 3
 
 __July 15 - July 22__ _(Week 8)_
 
 * Adding test cases for Simple Random Walk and checking for vulnerabilities and thus improvement
+* Development of more formal methods for implementation of 2D Random Walks
 * Buffer Period : Completion of the remaining work and documentation improvement before Phase 2 Evaluation
 
 ***
@@ -352,7 +360,8 @@ __Phase 2 Evaluation__
 __July 22 - August 5__ _(Week 9, 10)_
 
 * Implementation of 2D Random Walks in Sympy
-* Start implementing other stochastic processes about which research would have been done previously
+* Theoretical study of Random Walks on an Interval
+* Implementation of other stochastic processes about which research would have been done previously
 
 __August 5 - August 12__ _(Week 11)_
 
@@ -408,12 +417,15 @@ The following are the list of the issues opened by me(listed in chronological or
 * [#16215](https://github.com/sympy/sympy/issues/16215) Core: Enhancing `unchanged` function to work for expressions like `exp(x)*exp(y)`
 * [#16239](https://github.com/sympy/sympy/issues/16239) Functions: Sympy not able to evaluate Global maximum and maxima of a function
 ### Code Reviews
-Code reviewing is one of the important tasks which helps new contributors learn more about Sympy. Though I was unable to find any major changes in the pull requests made by other contributors, I am trying my nest to help as much as I can.
+Code reviewing is one of the important tasks which helps new contributors learn more about Sympy. Though I was unable to find any major changes in the pull requests made by other contributors, I tried my best to help as much as I can and will continue to do so.
 * [#16096](https://github.com/sympy/sympy/pull/16096#pullrequestreview-208620762) Suggested a fellow contributor to add test cases for checking if Unicode test was handled properly.
 * [#16250](https://github.com/sympy/sympy/pull/16250) Suggested a minor correction in conditional statements
 
 ## References
+* [Sympy docs](https://docs.sympy.org/latest/index.html)
 * [Past year proposals](https://github.com/sympy/sympy/wiki/GSoC-2018-Current-Applications)
 * [Wikipedia](https://www.wikipedia.org/)
 * [Wolfram Mathworld](http://mathworld.wolfram.com)
 * [Stack Exchange](https://math.stackexchange.com)
+* Principles of Random Walk by _Spitzer F._
+* Markov Chains by _Norris J._
