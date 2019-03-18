@@ -280,7 +280,7 @@ class OneDRandomWalk(Basic):
 ```
 
 __2D Random Walk__
-This is more complicated to implement as compared to others. I will have to develop a strong foundation of 2D random walks beforehand so that their implementation could be done more easily. Keeping end users in mind, it will be better to implement a robust symmetric 2D random walk as compared to a slaggy and unnecessarily complicated 2D random walk functionality.
+This is more complicated to implement as compared to others. I'll have to develop a strong foundation of 2D random walks beforehand so that their implementation could be done more easily. Keeping end users in mind, it will be better to implement a robust symmetric 2D random walk as compared to a slaggy and unnecessarily complicated 2D random walk functionality.
 
 Thus, my primary focus will be to implement symmetric 2D random walks and then move forward with the unsymmetric part.
 
@@ -288,6 +288,8 @@ Functionalities planned to be implemented for 2D random walk are listed below:
 * Probability of coming back at the origin after the `N` steps
 * Expected distance after `N` steps
 * Expected number of steps taken to move to a distance `d` from the origin
+
+Please note that the list above is incomplete. The functionality of 2D Random Walk class will be extended much more than this but a theoretical research is required for the same. The community bonding period will be a good time for studying it and discussion of ideas with mentor.
 
 In this period, implementation of Stochastic Processes continuous in time will also be studied and if possible, implemented. However, considering the complexity of such processes and limited amount of time; I have not included them in the timeline. I will continue to work on them after GSoC.
 
