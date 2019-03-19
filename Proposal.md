@@ -91,11 +91,7 @@ More or less, the project can be broken into 4 stages:
 #### Stage 1
 ---
 Implementing basic probabilistic functions such as `mean`, `median` and `mode`.
-Currently, Sympy does not offer support for finding these averages. Mean is supported in terms of expectation but a standard function `mean` might be more useful to the end users. I will implement these essential functions before moving further as these are one of the most basic yet critical average values when it comes to Statistics.
-
-__Mean__
-
-It can be viewed simply as `E(X)`. I have started work on this in PR [#16314](https://github.com/sympy/sympy/pull/16314)
+Currently, Sympy does not offer support for finding these averages. Mean is supported in terms of expectation but standard functions for median and mode might be useful too. I will implement these essential functions before moving further as these are one of the most basic yet critical average values when it comes to Statistics.
 
 __Median__
 
