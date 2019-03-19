@@ -118,22 +118,32 @@ In this period, I would also like to work upon [`JointRV`](https://github.com/sy
 
 A typical bivariate distribution will look like:
 ```
-class Distribution(JointDistribution):
+class XYZDistribution(JointDistribution):
+
     _argnames = ['arg1', 'arg2']
     
     @property
+    
     def set(self):
+    
         # set on which the distribution is valid will be defined here
     
     @staticmethod
+    
     def check(self, arg1, arg2):
+    
         #checking if valid parameters are entered
         
     def pdf(self, arg1, arg2):
+    
         arg1, arg2 = self.arg1, self.arg2
+        
         # pdf defined
+        
     def marginal_distribution(self, arg1, arg2):
+    
         arg1, arg2 = self.arg1, aelf.arg2
+        
         # marginal distribution defined here
 ```
 
@@ -160,51 +170,91 @@ The user will give the initial state in the form of a row matrix. A square trans
 Crude functioning of class MarkovChain will be as follows:
 ```
 class MarkovChain(Basic):
-    def __new__(transition, state0 = None): #None if the user needs just properties related to Transition matrix
+
+    def __new__(transition, state0 = None): 
+    
+    #None if the user needs just properties related to Transition matrix
+    
         if state0 != None and not (isinstance(state0, Matrix)):
+        
             raise ValueError()
+            
         if not isinstance(transition, Matrix):
+        
             raise ValueError()
+            
         if sum(a) != 1:
+        
             raise ValueError()
+            
         # transition is not len(a)*len(a) matrix results in error
+        
         for j in range(len(a)):
+        
             if sum transition[j] != 1:
+            
                 raise ValueError()
     
     def init(self):
+    
         return self.args[1]
     
     def trans(self):
+    
         return self.args[0]
    
     def state(self, t):
+    
         if self.init != None
+        
             return self.init()*self.trans()**t
-        # We can do this by using either state0*transition**t or using a loop multiplying state matrix continuously with transition
-        # I would prefer loop as it will take something like O(t*n**2) complexity and former method will have O(t*n**3) complexity
+            
+        # We can do this by using either state0*transition**t or using a loop multiplying
+        # state matrix continuously with transition.
+        
+        # I would prefer loop as it will take something like O(t*n**2) complexity and former
+        # method will have O(t*n**3) complexity
     
     def stationary(self):
+    
         temp = self.trans().T
+        
         a = max(temp.eigenvects())[2][0]
+        
         return a/sum(a)
     
     def fundamental(self):
+    
         temp = self.trans()
+        
         flag = 0
+        
         arr = []
+        
         for i in range(len(temp)):
+        
             if temp[i][i] == 1:
+            
                 flag = 1
+                
                 arr.append(i)
+                
         if flag != 1:
+        
             return ValueError()
+            
         else:
+        
             for i in len(temp):
+            
                 temp[i].pop(arr(i))
+                
                 temp.pop(arr(i))
+                
                 for j in range(len(arr)):
+                
                     arr[j] = arr[j]-1
+                    
             return (eye(len(temp))-temp)**-1
 ```
 #### Stage 4
@@ -229,21 +279,37 @@ A crude prototype of class for implementation of Simple Random Walk is as follow
 
 ```
 class SimpleRandomWalk(Basic):
+
     def position(d, N):
+    
         if ((N-d)%2 != 0):
+        
             return 0
+            
         else:
+        
             return binomial(N, d)/2**N
+            
     def moment(t, N):
+    
         d = Symbol('d', real = True)
+        
         return summation((d**t)*position(d, N), (d, -N, N))
+        
     def mean():
+    
         return 0
+        
     def skewness():
+    
         return 0
+        
     def kurtosis(N):
+    
         return (-2)/N
+        
     def expectedPosition(N):
+    
         return summation(Abs(d)*position(d, N), (d, -N, N))
     
 ```
@@ -264,18 +330,31 @@ Following is the crude prototype for class of 1D Random Walk:
 
 ```
 class OneDRandomWalk(Basic):
+
     def position(self, d, N):
+    
         if (N-d)%2 != 0:
+        
             return 0
+            
         else:
+        
             return binomial(N, (d+N)/2)*self.p**((N+d)/2)*selfq**((N-d)/2)
+            
     def expectedRight(self, N):
+    
         return self.p*N
+        
     def expectedLeft(self, N):
+    
         return self.q*N
+        
     def variance(self, N):
+    
         return N*self.p*self.q
+        
     def std(N):
+    
         return sqrt(variance(N))
 ```
 
