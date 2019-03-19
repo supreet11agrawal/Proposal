@@ -484,36 +484,58 @@ I will continue my work on the stats module and work on introducing new Stochast
 The following are the lists of merged/open pull requests I have created(listed in chronological order)
 
 * [#15841](https://github.com/sympy/sympy/pull/15841) Numbers: Removed the redundant checks of igcd method and simplified it.
+
 * [#15958](https://github.com/sympy/sympy/pull/15958) Stats: Disabled non valid probability inputs by Bernoulli, Coin and FiniteRV distibutions.
+
 * [#16093](https://github.com/sympy/sympy/pull/16093) Core: Improved handling of Unicode text.
+
 * [#16108](https://github.com/sympy/sympy/pull/16108) Stats:Improved parameter handling by Benini distribution.
+
 * [#16154](https://github.com/sympy/sympy/pull/16154) Travis: Added a flag which reduced the output log so compilation errors could be found easily. (This PR used [#16156]() for testing the correctness of change)
+
 * [#16159](https://github.com/sympy/sympy/pull/16159) Stats: Improved parameter handling and documentation of continuous distributions.
+
 * [#16183](https://github.com/sympy/sympy/pull/16183) Stats: Completed the parameter handling improvement by continuous distributions.
+
 * [#16189](https://github.com/sympy/sympy/pull/16189) Core: Added a function `unchanged` which checks if the expression remains unchanged.
+
 * [#16220](https://github.com/sympy/sympy/pull/16220) Core: Replaced redundant checks in `core/tests/test_arit.py`
+
 * [#16312](https://github.com/sympy/sympy/pull/16312) Stats: F Distribution parameter checking and test cases addition
+
 * [#16314](https://github.com/sympy/sympy/pull/16314) Stats: Added a function `mean` which can used to calculate arithmetic average
 ### Issues opened
 The following are the list of the issues opened by me(listed in chronological order)
 
 * [#15903](https://github.com/sympy/sympy/issues/15903) Stats: Non valid probability allowed by Finite Distributions resulting in wrong results
+
 * [#15904](https://github.com/sympy/sympy/issues/15904) Stats: Finite Distributions were not added to Sympy docs
+
 * [#16107](https://github.com/sympy/sympy/issues/16107) Stats: Non valid parameters were allowed by continuous distributions
+
 * [#16215](https://github.com/sympy/sympy/issues/16215) Core: Enhancing `unchanged` function to work for expressions like `exp(x)*exp(y)`
+
 * [#16239](https://github.com/sympy/sympy/issues/16239) Functions: Sympy not able to evaluate Global maximum and maxima of a function
 
 ### Code Reviews
 Code reviewing is one of the important tasks which helps new contributors learn more about Sympy. Though I was unable to find any major changes in the pull requests made by other contributors, I tried my best to help as much as I can and will continue to do so.
 * [#16096](https://github.com/sympy/sympy/pull/16096#pullrequestreview-208620762) Suggested a fellow contributor to add test cases for checking if Unicode test was handled properly.
+
 * [#16250](https://github.com/sympy/sympy/pull/16250#pullrequestreview-215008578) Suggested a minor correction in conditional statements
+
 * [#16325](https://github.com/sympy/sympy/pull/16325#pullrequestreview-215960157) An assertion statement was giving error. Suggested how to write it correctly.
 
 ## References
 * [Sympy docs](https://docs.sympy.org/latest/index.html)
+
 * [Past year proposals](https://github.com/sympy/sympy/wiki/GSoC-2018-Current-Applications)
+
 * [Wikipedia](https://www.wikipedia.org/)
+
 * [Wolfram Mathworld](http://mathworld.wolfram.com)
+
 * [Stack Exchange](https://math.stackexchange.com)
+
 * Principles of Random Walk by _Spitzer F._
+
 * Markov Chains by _Norris J._
