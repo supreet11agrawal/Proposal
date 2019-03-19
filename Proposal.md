@@ -427,7 +427,8 @@ The following are the list of the issues opened by me(listed in chronological or
 ### Code Reviews
 Code reviewing is one of the important tasks which helps new contributors learn more about Sympy. Though I was unable to find any major changes in the pull requests made by other contributors, I tried my best to help as much as I can and will continue to do so.
 * [#16096](https://github.com/sympy/sympy/pull/16096#pullrequestreview-208620762) Suggested a fellow contributor to add test cases for checking if Unicode test was handled properly.
-* [#16250](https://github.com/sympy/sympy/pull/16250) Suggested a minor correction in conditional statements
+* [#16250](https://github.com/sympy/sympy/pull/16250#pullrequestreview-215008578) Suggested a minor correction in conditional statements
+* [#16325](https://github.com/sympy/sympy/pull/16325#pullrequestreview-215960157) An assertion statement was giving error. Suggested how to write it correctly.
 
 ## References
 * [Sympy docs](https://docs.sympy.org/latest/index.html)
