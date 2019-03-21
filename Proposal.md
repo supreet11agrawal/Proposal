@@ -90,12 +90,20 @@ More or less, the project can be broken into 4 stages:
 
 #### Stage 1
 ---
-Implementing basic probabilistic functions such as `mean`, `median` and `mode`.
+Implementing basic probabilistic functions such as `quantile`, `median` and `mode`.
 Currently, Sympy does not offer support for finding these averages. Mean is supported in terms of expectation but standard functions for median and mode might be useful too. I will implement these essential functions before moving further as these are one of the most basic yet critical average values when it comes to Statistics.
+
+__Quantile__
+
+It can be viewed as `solve(cdf(X)(z) - p, z)`. Here, `X` is the distribution, `z` is the random variable and `p`. This should more robustly for a continuous distribution which are most widely used.
+
+For discrete cases, however, the situation changes and more theoretical research needs to be done before implementation.
 
 __Median__
 
-This can be calculated by using something like `min(solveset(Eq(cdf(X)(z), S.Half), z, domain = S.Reals)` where `X` is the density of a distribution.
+It can be considered a special case of `Quantile` for which `p` is `1/2`.
+
+Alternatively, this can be calculated by using something like `min(solveset(Eq(cdf(X)(z), S.Half), z, domain = S.Reals)` where `X` is the density of a distribution.
 
 __Mode__
 
@@ -110,9 +118,8 @@ In this period I would like to brush up the concepts of Stochastic processes and
 
 Implementing multivariate distributions will help me understand more how I should implement stochastic processes. In this period I would like to introduce a few more bivariate distributions to Sympy. Right now, I am focusing mainly on bivariate distributions. If time permits, then I would work upon multivariate distributions as well.
 
-In this period, I would also like to work upon [`JointRV`](https://github.com/sympy/sympy/blob/master/sympy/stats/joint_rv_types.py#L22). As of now, the set for each component for a `JointRV` is equal to the Real set, which can not be changed. Work will be done on adding support for custom sets which the users can provide.
-
 A typical bivariate distribution will look like:
+
 ```
 class XYZDistribution(JointDistribution):
 
@@ -142,6 +149,8 @@ class XYZDistribution(JointDistribution):
         
         # marginal distribution defined here
 ```
+
+In this period, I would also like to work upon [`JointRV`](https://github.com/sympy/sympy/blob/master/sympy/stats/joint_rv_types.py#L22). As of now, the set for each component for a `JointRV` is equal to the Real set, which can not be changed. Work will be done on adding support for custom sets which the users can provide.
 
 #### Stage 3
 ---
@@ -253,6 +262,8 @@ class MarkovChain(Basic):
                     
             return (eye(len(temp))-temp)**-1
 ```
+
+
 #### Stage 4
 ---
 
