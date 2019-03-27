@@ -1,7 +1,7 @@
 # GSoC 2019 Proposal Supreet Agrawal
 ## Title
 
-#### Sympy: Implementing Stochastic Processes and Extending Bivariate Distributions
+#### Implementing Stochastic Processes and Extending Bivariate Distributions
 ## Abstract
 Sympy, being a Computer Algebra System offers great functionality and extensive support for symbolic computing. Probability and Statistics have an importance which has been recognised in most, if not all areas of science. SymPy implements univariate probability spaces in great detail, but spaces involving multiple random variables are not implemented with much detail, and random processes are not implemented at all.
 
