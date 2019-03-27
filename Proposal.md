@@ -7,7 +7,7 @@ Sympy, being a Computer Algebra System offers great functionality and extensive 
 
 As a CAS, it is essential that Sympy provides more support in the field of Probability and Statistics. One of the significant areas of interest in Probability is Stochastic Processes which have applications in various ranging from basic sciences to cryptography, signal processing and even financial markets.
 
-My work in Sympy during summer would be to extend the support for bivariate distributions and introduce Stochastic Processes in Sympy.
+My work in Sympy during summer would be to extend the support for bivariate distributions and introduce Stochastic Processes in Sympy. Later work will include adding support to export expressions of random variables to external libraries such as PyMC3 and PyStan.
 ## About Me
 
 ### Personal
@@ -58,7 +58,7 @@ I was introduced to Python two years ago. However, I am relatively new in terms 
 My favourite feature about Sympy is its ability to compute asymptotic series expansions of functions around a point. I came across this feature while getting acquainted with the library. Sympy's ability to compute series expansions left me awestruck and was one of the primary reasons that inspired me to learn more about Sympy.
 ```
 >>> x, n, t = symbols('x n t')
->>> pprint(log(x-t).series(x, x0 =t/n))
+>>> pprint(log(x-t).series(x, x0 =t/n), use_unicode = False)
                                 2                              3                                           4                                                           5                        
                 ⎛    t⎞          2 ⎛    t⎞                      3 ⎛    t⎞                                   4 ⎛    t⎞                                                   5 ⎛    t⎞                         
               n⋅⎜x - ─⎟         n ⋅⎜x - ─⎟                     n ⋅⎜x - ─⎟                                3⋅n ⋅⎜x - ─⎟                                               12⋅n ⋅⎜x - ─⎟                         
@@ -109,6 +109,17 @@ __Mode__
 
 This can be viewed something like `z` for which `density(X)(z) == max(density(X)(x))`. This can also be implemented by checking `min` of `solveset(Eq(density(X)(z).diff(z)))` which satisfies `density(X)(z).diff(z, 2) < 0`. However, this method won't be able to find the mode for distributions which have mode as global maxima; for example, Exponential Distribution. For such distributions, the former method might be more useful. Currently, finding global maximum and maxima of a function is not possible in Sympy. I am working on this issue in [#16239](https://github.com/sympy/sympy/issues/16239) and will continue with it once the proposal is finalised.
 
+__Entropy__
+
+As of now, Entropy of a distribution cannot be evaluated in Sympy. Following is the High-Level idea of implementing probability:
+```
+if X.is_discrete:
+    return summation(density(X)*log(density(X)))
+elif X.is_continuous:
+    return integrate(density(X)*log(density(X)))
+```
+Note: This is a high level idea just to show basic functioning.
+
 __Theoretical Research__
 
 In this period I would like to brush up the concepts of Stochastic processes and work on developing a basic methodology for implementing them in Sympy.
@@ -116,7 +127,15 @@ In this period I would like to brush up the concepts of Stochastic processes and
 #### Stage 2
 ---
 
-Implementing multivariate distributions will help me understand more how I should implement stochastic processes. In this period I would like to introduce a few more bivariate distributions to Sympy. Right now, I am focusing mainly on bivariate distributions. If time permits, then I would work upon multivariate distributions as well.
+In this period, I would work upon [`JointRV`](https://github.com/sympy/sympy/blob/master/sympy/stats/joint_rv_types.py#L22). As of now, the set for each component for a `JointRV` is equal to the Real set, which can not be changed. Work will be done on adding support for custom sets which the users can provide.
+
+Also, looking at the `joint_rv.py`, one can see that various functions need to be implemented for making joint distributions more robust. Primary examples which need utmost priority are [`where`](https://github.com/sympy/sympy/blob/fb7ed3c7d4dc437745db366f28c55d5963c55f0a/sympy/stats/joint_rv.py#L127), [`compute_density`](https://github.com/sympy/sympy/blob/fb7ed3c7d4dc437745db366f28c55d5963c55f0a/sympy/stats/joint_rv.py#L130), [`sample`](https://github.com/sympy/sympy/blob/fb7ed3c7d4dc437745db366f28c55d5963c55f0a/sympy/stats/joint_rv.py#L133) and [`probability`](https://github.com/sympy/sympy/blob/fb7ed3c7d4dc437745db366f28c55d5963c55f0a/sympy/stats/joint_rv.py#L136).
+
+Implementing `compute_density` isn't much of a challenge. `marginal_distribution` works by finding integral over all the other random variables (other than the one for which marginal distribution needs to be calculated) over the `S.Reals` domain. As I have mentioned above, this `S.Reals` is set dafault and cannot be changed by the user. Thus by changing limits to `lower_bound of x` to `x` for each random variable `x`, cdf can be calculated.
+
+Similarily, `where` can also be broken into two parts using `P(A/B) = P(Intersection(A, B))/P(B)`. The same has been implemented for univariate distributions. Once all these functions are implemented `probability` will just show results on a basis of these.
+
+Also, implementing multivariate distributions will help me understand more how I should implement stochastic processes. In this period I would like to introduce a few more multivariate distributions to Sympy.
 
 A typical bivariate distribution will look like:
 
@@ -150,12 +169,10 @@ class XYZDistribution(JointDistribution):
         # marginal distribution defined here
 ```
 
-In this period, I would also like to work upon [`JointRV`](https://github.com/sympy/sympy/blob/master/sympy/stats/joint_rv_types.py#L22). As of now, the set for each component for a `JointRV` is equal to the Real set, which can not be changed. Work will be done on adding support for custom sets which the users can provide.
-
 #### Stage 3
 ---
 
-I would start working on stochastic distributions in this period. A new file `stochastic.py` will contain all the different types of stochastic processes.
+I would start working on stochastic distributions in this period. A new file `stochastic_types.py` will contain all the different types of stochastic processes.
 
 For each different process, there will be a different class which stores different information related to the process in the form of objects. I will start with Markov chains during this stage.
 
@@ -262,7 +279,7 @@ class MarkovChain(Basic):
                     
             return (eye(len(temp))-temp)**-1
 ```
-
+Basic idea here is to make a object of `MarkovChain` class and use this class for evaluating different outcomes.
 
 #### Stage 4
 ---
@@ -379,6 +396,61 @@ Please note that the list above is incomplete. The functionality of 2D Random Wa
 
 In this period, implementation of Stochastic Processes continuous in time will also be studied and if possible, implemented. However, considering the complexity of such processes and limited amount of time; I have not included them in the timeline. I will continue to work on them after GSoC.
 
+#### Stage 5
+---
+
+__Exporting expressions of Random Variables to external libraries__
+
+The idea here is to make Sympy random variables exportable to libraries such as PyStan and PyMC3. These libraries are quite efficient in terms of probabilistic calculations and will thus increase robustness of Sympy stats module as well.
+
+For any distribution, the aim will be to make a PyMC3/PyStan model which takes Sympy random variables as parameters.
+For PyMC3, (last year's proposal (Stage 5 of The Project))[https://github.com/sympy/sympy/wiki/GSoC-2018-Application-Akash-Vaish:-Improving-Probability-and-Random-processes#the-project] has an excellent idea of implementation.
+
+The function mentioned in the proposal (Normal distribution as an example) was: 
+
+```
+import sympy.stats as ss
+
+import pymc3 as pm
+
+def convert_normal(normal_rv):
+
+    """
+
+    Given parameter is a sympy normal RV, which will be converted to
+
+    a PyMC3 random variable. The PyMC3 RV is returned.
+
+    """
+
+    converter = pm.Model()
+
+    name = str(normal_rv.args[0])
+
+    mu, sd =  (int(arg) for arg in ss.density(normal_rv).args)
+
+    with converter: #initialize model
+
+        pm_normal = pm.Normal(name, mu, sd)
+
+    return pm_normal
+```
+Usage:
+
+```
+>>> N = ss.Normal('N', 0, 1)
+
+>>> x = convert_normal(N)
+
+>>> type(x)
+
+<class 'pymc3.model.FreeRV'>
+```
+
+However, I had a few changes in mind. This function does not work for symbolic parameters; i.e. `ss.Normal('N', mean, std)` as `int(arg)` in the line `mu, sd =  (int(arg) for arg in ss.density(normal_rv).args)` will not work for symbols. If we pass them directly, that is `mu, sd =  (arg for arg in ss.density(normal_rv).args)`, then it might create problem in PyMC3. Discussion with mentor in the community bonding period would most likely give a feasible solution.
+
+For PyStan, `pystan.stan` will be used for modelling. 
+
 ### TimeLine
 
 My semester will end on 30th April; hence I am not including the time before 30th April 2019 in the timeline. In this period, however, I would like to work on the stats module and try to stay ahead of the timeline.
@@ -460,7 +532,13 @@ __August 5 - August 12__ _(Week 11)_
 * Discussion with mentor regarding future work and further possiblities of adding more processes including continuous time processes
 * Completion of Stage 4
 
-__August 12 - August 26__ _(Week 12, 13)_
+__August 12 - August 19__ _(Week 12)_
+
+* Work on exporting random variables to external libraries
+* Discussion with mentor about future possible improvements to the stats module
+* Completion of Stage 5
+
+__August 19 - August 26__ _(Week 13)_
 
 * Buffer Period : Completion of any backlog and documentation improvement before marking the completion of project
 * Final Report Submission
@@ -511,6 +589,9 @@ The following are the lists of merged/open pull requests I have created(listed i
 * [#16312](https://github.com/sympy/sympy/pull/16312) Stats: F Distribution parameter checking and test cases addition
 
 * [#16314](https://github.com/sympy/sympy/pull/16314) Stats: Added a function `mean` which can used to calculate arithmetic average
+
+* [#16461](https://github.com/sympy/sympy/pull/16461) Stats: Restored changes in docs which were made by me in an old PR
+
 ### Issues opened
 The following are the list of the issues opened by me(listed in chronological order)
 
