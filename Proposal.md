@@ -95,13 +95,13 @@ Currently, Sympy does not offer support for finding these averages. Mean is supp
 
 __Quantile__
 
-It can be viewed as `solve(cdf(X)(z) - p, z)`. Here, `X` is the distribution, `z` is the random variable and `p`. This should more robustly for a continuous distribution which are most widely used.
+It can be viewed as `solve(cdf(X)(z) - p, z)`. Here, `X` is the distribution, `z` is the random variable and `p`. This function should work more robustly for continuous distributions which are most widely used.
 
 For discrete cases, however, the situation changes and more theoretical research needs to be done before implementation.
 
 __Median__
 
-It can be considered a special case of `Quantile` for which `p` is `1/2`.
+It can be considered a particular case of `Quantile` for which `p` is `1/2`.
 
 Alternatively, this can be calculated by using something like `min(solveset(Eq(cdf(X)(z), S.Half), z, domain = S.Reals)` where `X` is the density of a distribution.
 
@@ -133,7 +133,7 @@ Also, looking at the `joint_rv.py`, one can see that various functions need to b
 
 Implementing `compute_density` isn't much of a challenge. `marginal_distribution` works by finding integral over all the other random variables (other than the one for which marginal distribution needs to be calculated) over the `S.Reals` domain. As I have mentioned above, this `S.Reals` is set dafault and cannot be changed by the user. Thus by changing limits to `lower_bound of x` to `x` for each random variable `x`, cdf can be calculated.
 
-Similarily, `where` can also be broken into two parts using `P(A/B) = P(Intersection(A, B))/P(B)`. The same has been implemented for univariate distributions. Once all these functions are implemented `probability` will just show results on a basis of these.
+Similarily, `where` can also be broken into two parts using `P(A/B) = P(Intersection(A, B))/P(B)`. The same has been implemented for univariate distributions. Once all these functions are implemented `probability` will just show results on the basis of these.
 
 Also, implementing multivariate distributions will help me understand more how I should implement stochastic processes. In this period I would like to introduce a few more multivariate distributions to Sympy.
 
@@ -279,12 +279,12 @@ class MarkovChain(Basic):
                     
             return (eye(len(temp))-temp)**-1
 ```
-Basic idea here is to make a object of `MarkovChain` class and use this class for evaluating different outcomes.
+The basic idea here is to make an object of `MarkovChain` class and use this class for evaluating different outcomes.
 
 #### Stage 4
 ---
 
-I would start working on the implementation of Random Walks during this period. The first problem that I would like to mention here is that Sympy is not a simulation software, as told by [Mr. Fransesco Bonazzi](https://github.com/Upabjojr). I agree and thus think that we cannot implement a simulation of Random Walk andd tell the user the path taken for a particular case. Here, we need to compute the properties of a given random walk and not simulate it and tell the user results for a particular trial.
+I would start working on the implementation of Random Walks during this period. The first problem that I would like to mention here is that Sympy is not a simulation software, as told by [Mr Fransesco Bonazzi](https://github.com/Upabjojr). I agree and thus think that we cannot implement a simulation of Random Walk andd tell the user the path taken for a particular case. Here, we need to compute the properties of a given random walk and not simulate it and tell the user results for a particular trial.
 
 I would start with Simple Random Walks as they are most basic and useful. After that 1D random walks(Bernoulli Walk) and 2D random walks will be implemented. If time permits then random walks can also be implemented for a graph of any general `n` degrees.
 
@@ -392,7 +392,7 @@ Functionalities planned to be implemented for 2D random walk are listed below:
 * Expected distance after `N` steps
 * Expected number of steps taken to move to a distance `d` from the origin
 
-Please note that the list above is incomplete. The functionality of 2D Random Walk class will be extended much more than this but a theoretical research is required for the same. The community bonding period will be a good time for studying it and discussion of ideas with mentor.
+Please note that the list above is incomplete. The functionality of 2D Random Walk class will be extended much more than this, but theoretical research is required for the same. The community bonding period will be a good time for studying it and discussion of ideas with the mentor.
 
 In this period, implementation of Stochastic Processes continuous in time will also be studied and if possible, implemented. However, considering the complexity of such processes and limited amount of time; I have not included them in the timeline. I will continue to work on them after GSoC.
 
@@ -401,7 +401,7 @@ In this period, implementation of Stochastic Processes continuous in time will a
 
 __Exporting expressions of Random Variables to external libraries__
 
-The idea here is to make Sympy random variables exportable to libraries such as PyStan and PyMC3. These libraries are quite efficient in terms of probabilistic calculations and will thus increase robustness of Sympy stats module as well.
+The idea here is to make Sympy random variables exportable to libraries such as PyStan and PyMC3. These libraries are quite efficient in terms of probabilistic calculations and will thus increase the robustness of Sympy stats module as well.
 
 For any distribution, the aim will be to make a PyMC3/PyStan model which takes Sympy random variables as parameters.
 For PyMC3, (last year's proposal (Stage 5 of The Project))[https://github.com/sympy/sympy/wiki/GSoC-2018-Application-Akash-Vaish:-Improving-Probability-and-Random-processes#the-project] has an excellent idea of implementation.
@@ -447,7 +447,7 @@ Usage:
 <class 'pymc3.model.FreeRV'>
 ```
 
-However, I had a few changes in mind. This function does not work for symbolic parameters; i.e. `ss.Normal('N', mean, std)` as `int(arg)` in the line `mu, sd =  (int(arg) for arg in ss.density(normal_rv).args)` will not work for symbols. If we pass them directly, that is `mu, sd =  (arg for arg in ss.density(normal_rv).args)`, then it might create problem in PyMC3. Discussion with mentor in the community bonding period would most likely give a feasible solution.
+However, I had a few changes in mind. This function does not work for symbolic parameters; i.e. `ss.Normal('N', mean, std)` as `int(arg)` in the line `mu, sd =  (int(arg) for arg in ss.density(normal_rv).args)` will not work for symbols. If we pass them directly, that is `mu, sd =  (arg for arg in ss.density(normal_rv).args)`, then it might create a problem in PyMC3. Discussion with mentor in the community bonding period would most likely give a feasible solution.
 
 For PyStan, `pystan.stan` will be used for modelling. 
 
@@ -478,7 +478,7 @@ __May 27 - May 31__ _(Week 1)_
 
 * Work on including custom set support in joint distributions
 * Theoretical Research on Markov Chains and ways to implement them _from Chapter 1 of Markov Chains by Norris J._
-* Buffer Period : Completion of the remaining work and documentation improvement before moving to stage 2
+* Buffer Period: Completion of the remaining work and documentation improvement before moving to stage 2
 
 __May 31 - June 20__ _(Week 2, 3)_
 
@@ -491,7 +491,7 @@ __June 20 - June 24__ _(Week 4)_
 
 * Start working on implementation of Markov Chains
 * Study two dimensional recurrent random walk and the green function associated with it
-* Buffer Period : Completion of the remaining work and documentation improvement before Phase 1 Evaluation
+* Buffer Period: Completion of the remaining work and documentation improvement before Phase 1 Evaluation
 
 ***
 __Phase 1 Evaluation__
@@ -514,7 +514,7 @@ __July 15 - July 22__ _(Week 8)_
 
 * Adding test cases for Simple Random Walk and checking for vulnerabilities and thus improvement
 * Development of more formal methods for implementation of 2D Random Walks
-* Buffer Period : Completion of the remaining work and documentation improvement before Phase 2 Evaluation
+* Buffer Period: Completion of the remaining work and documentation improvement before Phase 2 Evaluation
 
 ***
 __Phase 2 Evaluation__
@@ -540,7 +540,7 @@ __August 12 - August 19__ _(Week 12)_
 
 __August 19 - August 26__ _(Week 13)_
 
-* Buffer Period : Completion of any backlog and documentation improvement before marking the completion of project
+* Buffer Period: Completion of any backlog and documentation improvement before marking the completion of the project
 * Final Report Submission
 
 ***
@@ -573,11 +573,11 @@ The following are the lists of merged/open pull requests I have created(listed i
 
 * [#15841](https://github.com/sympy/sympy/pull/15841) Numbers: Removed the redundant checks of igcd method and simplified it.
 
-* [#15958](https://github.com/sympy/sympy/pull/15958) Stats: Disabled non valid probability inputs by Bernoulli, Coin and FiniteRV distibutions.
+* [#15958](https://github.com/sympy/sympy/pull/15958) Stats: Disabled non-valid probability inputs by Bernoulli, Coin and FiniteRV distibutions.
 
 * [#16093](https://github.com/sympy/sympy/pull/16093) Core: Improved handling of Unicode text.
 
-* [#16108](https://github.com/sympy/sympy/pull/16108) Stats:Improved parameter handling by Benini distribution.
+* [#16108](https://github.com/sympy/sympy/pull/16108) Stats: Improved parameter handling by Benini distribution.
 
 * [#16154](https://github.com/sympy/sympy/pull/16154) Travis: Added a flag which reduced the output log so compilation errors could be found easily. (This PR used [#16156]() for testing the correctness of change)
 
@@ -591,7 +591,7 @@ The following are the lists of merged/open pull requests I have created(listed i
 
 * [#16312](https://github.com/sympy/sympy/pull/16312) Stats: F Distribution parameter checking and test cases addition
 
-* [#16314](https://github.com/sympy/sympy/pull/16314) Stats: Added a function `mean` which can used to calculate arithmetic average
+* [#16314](https://github.com/sympy/sympy/pull/16314) Stats: Added a function `mean` which can be used to calculate arithmetic average
 
 * [#16461](https://github.com/sympy/sympy/pull/16461) Stats: Restored changes in docs which were made by me in an old PR
 
@@ -600,11 +600,11 @@ The following are the lists of merged/open pull requests I have created(listed i
 ### Issues opened
 The following are the list of the issues opened by me(listed in chronological order)
 
-* [#15903](https://github.com/sympy/sympy/issues/15903) Stats: Non valid probability allowed by Finite Distributions resulting in wrong results
+* [#15903](https://github.com/sympy/sympy/issues/15903) Stats: Non-valid probability allowed by Finite Distributions resulting in wrong results
 
 * [#15904](https://github.com/sympy/sympy/issues/15904) Stats: Finite Distributions were not added to Sympy docs
 
-* [#16107](https://github.com/sympy/sympy/issues/16107) Stats: Non valid parameters were allowed by continuous distributions
+* [#16107](https://github.com/sympy/sympy/issues/16107) Stats: Non-valid parameters were allowed by continuous distributions
 
 * [#16215](https://github.com/sympy/sympy/issues/16215) Core: Enhancing `unchanged` function to work for expressions like `exp(x)*exp(y)`
 
@@ -614,7 +614,7 @@ The following are the list of the issues opened by me(listed in chronological or
 
 ### Code Reviews
 Code reviewing is one of the important tasks which helps new contributors learn more about Sympy. Though I was unable to find any major changes in the pull requests made by other contributors, I tried my best to help as much as I can and will continue to do so.
-* [#16096](https://github.com/sympy/sympy/pull/16096#pullrequestreview-208620762) Suggested a fellow contributor to add test cases for checking if Unicode test was handled properly.
+* [#16096](https://github.com/sympy/sympy/pull/16096#pullrequestreview-208620762) Suggested a fellow contributor to add test cases for checking if Unicode text was handled properly.
 
 * [#16250](https://github.com/sympy/sympy/pull/16250#pullrequestreview-215008578) Suggested a minor correction in conditional statements
 
