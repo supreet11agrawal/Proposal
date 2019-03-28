@@ -12,21 +12,21 @@ My work in Sympy during summer would be to extend the support for bivariate dist
 
 ### Personal
 
-__Name__ : Supreet Agrawal
+__Name__: Supreet Agrawal
 
-__Email Id__ : 
+__Email Id__: 
 * supreeta@iitk.ac.in *(Primary)*
 * supreet11agrawal@gmail.com
  
- __Phone Number__ : +91 8766372649
+ __Phone Number__: +91 8766372649
  
- __Gitter Usename__ : [supreet11agrawal](https://gitter.im/supreet11agrawal)
+ __Gitter Usename__: [supreet11agrawal](https://gitter.im/supreet11agrawal)
  
- __Location__ : Kanpur, U.P., India ([Maps](https://www.google.co.in/maps/place/Indian+Institute+of+Technology+Kanpur/@26.5144225,80.2389891,15z/data=!4m5!3m4!1s0x399c3701c4a8be71:0x3afbe880abc38436!8m2!3d26.5123383!4d80.2328995?hl=en))
+ __Location__: Kanpur, U.P., India ([Maps](https://www.google.co.in/maps/place/Indian+Institute+of+Technology+Kanpur/@26.5144225,80.2389891,15z/data=!4m5!3m4!1s0x399c3701c4a8be71:0x3afbe880abc38436!8m2!3d26.5123383!4d80.2328995?hl=en))
  
- __Timezone__ : IST ([GMT/UTC +5:30](https://www.timeanddate.com/time/zones/ist))
+ __Timezone__: IST ([GMT/UTC +5:30](https://www.timeanddate.com/time/zones/ist))
  
- __University__ : Indian Institute of Technology, Kanpur ([Webpage](http://www.iitk.ac.in))
+ __University__: Indian Institute of Technology, Kanpur ([Webpage](http://www.iitk.ac.in))
 
 ### Programming Background
 
@@ -562,7 +562,10 @@ After Summer, as it will be beginning of new semester, I will be able to spend r
 Summing up, on an average I would be able to give 40-50 hours per week in the period of GSoC.
 
 ### Post GSOC period
-I will continue my work on the stats module and work on introducing new Stochastic Processes. I would also work upon exporting expressions of random variables to other libraries which has been listed under the project ideas page.
+
+I will continue my work in Sympy and on the stats module and work on introducing new Stochastic Processes. I would also work upon increasing robustness of the module and improving the multivariate distributions.
+
+Post GSoC, one important thing which can be changed is to make unevaluated version of `probability`. This can be understood as `Integral` which is the unevaluated version of `integrate`. `doit()` will be used to evaluate the probability explicity in this case. This approach was a result of discussion with [Mr. Fransesco Bonazzi](https://github.com/Upabjojr) and I am quite excited to work upon this.
 
 ## Contributions to Sympy
 ### Pull requests
@@ -591,6 +594,8 @@ The following are the lists of merged/open pull requests I have created(listed i
 * [#16314](https://github.com/sympy/sympy/pull/16314) Stats: Added a function `mean` which can used to calculate arithmetic average
 
 * [#16461](https://github.com/sympy/sympy/pull/16461) Stats: Restored changes in docs which were made by me in an old PR
+
+* [#16473](https://github.com/sympy/sympy/pull/16473) Caculus: Added functions `stationary_points`, `minimize`, `maximize` which are used frequently in calculus.
 
 ### Issues opened
 The following are the list of the issues opened by me(listed in chronological order)
