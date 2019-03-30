@@ -51,7 +51,7 @@ Some of these being :
 
 As I have mentioned above, my coursework in Probability and Statistics helped me learn a lot in the field and will bring help to me directly in the Summer of Code project.
 
-I am using Ubuntu 18.04 (LTS) and Atom for writing all of my code. I am using this setup for the last two years, and in this duration, I have become quite comfortable with it. For the purpose of debugging, I use *pdb*, to which I was introduced via [Kalevi Suominen](https://github.com/jksuom) while working on an issue.
+I am using Ubuntu 18.04 (LTS) and Atom for writing all of my code. I am using this setup for the last two years, and in this duration, I have become quite comfortable with it. For the purpose of debugging, I use *pdb*, to which I was introduced via [Mr Kalevi Suominen](https://github.com/jksuom) while working on an issue.
 
 I was introduced to Python two years ago. However, I am relatively new in terms of object oriented programming. Before working in Python, my programming experience was confined to C and C++. In comparison to these languages, Python is much more intuitive. In my opinion, Python is more expressive than any other language I have used. According to me, list comprehension is one of the best features which I have used.
 
@@ -95,7 +95,7 @@ Currently, Sympy does not offer support for finding these averages. Mean is supp
 
 __Quantile__
 
-It can be viewed as `solve(cdf(X)(z) - p, z)`. Here, `X` is the distribution, `z` is the random variable and `p`. This function should work more robustly for continuous distributions which are most widely used.
+It can be viewed as `solve(cdf(X)(z) - p, z)`. Here, `X` is the distribution, `z` is the random variable and `p` is the probability. This function should work more robustly for continuous distributions which are most widely used.
 
 For discrete cases, however, the situation changes and more theoretical research needs to be done before implementation.
 
@@ -103,7 +103,7 @@ __Median__
 
 It can be considered a particular case of `Quantile` for which `p` is `1/2`.
 
-Alternatively, this can be calculated by using something like `min(solveset(Eq(cdf(X)(z), S.Half), z, domain = S.Reals)` where `X` is the density of a distribution.
+Alternatively, this can be calculated by using something like `min(solveset(Eq(cdf(X)(z), S.Half), z, domain = S.Reals)` where `X` is a distribution.
 
 __Mode__
 
