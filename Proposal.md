@@ -99,6 +99,8 @@ It can be viewed as `solve(cdf(X)(z) - p, z)`. Here, `X` is the distribution, `z
 
 For discrete cases, however, the situation changes and more theoretical research needs to be done before implementation.
 
+I have started working on this in [#16542](https://github.com/sympy/sympy/pull/16542). Further improvements will be made to this in due course of time.
+
 __Median__
 
 It can be considered a particular case of `Quantile` for which `p` is `1/2`.
@@ -120,9 +122,6 @@ elif X.is_continuous:
 ```
 Note: This is a high level idea just to show basic functioning.
 
-__Theoretical Research__
-
-In this period I would like to brush up the concepts of Stochastic processes and work on developing a basic methodology for implementing them in Sympy.
 
 #### Stage 2
 ---
@@ -284,7 +283,7 @@ The basic idea here is to make an object of `MarkovChain` class and use this cla
 #### Stage 4
 ---
 
-I would start working on the implementation of Random Walks during this period. The first problem that I would like to mention here is that Sympy is not a simulation software, as told by [Mr Fransesco Bonazzi](https://github.com/Upabjojr). I agree and thus think that we cannot implement a simulation of Random Walk andd tell the user the path taken for a particular case. Here, we need to compute the properties of a given random walk and not simulate it and tell the user results for a particular trial.
+I would start working on the implementation of Random Walks during this period. The first problem that I would like to mention here is that Sympy is not a simulation software, as told by [Mr Francesco Bonazzi](https://github.com/Upabjojr). I agree and thus think that we cannot implement a simulation of Random Walk andd tell the user the path taken for a particular case. Here, we need to compute the properties of a given random walk and not simulate it and tell the user results for a particular trial.
 
 I would start with Simple Random Walks as they are most basic and useful. After that 1D random walks(Bernoulli Walk) and 2D random walks will be implemented. If time permits then random walks can also be implemented for a graph of any general `n` degrees.
 
@@ -561,11 +560,16 @@ After Summer, as it will be beginning of new semester, I will be able to spend r
 
 Summing up, on an average I would be able to give 40-50 hours per week in the period of GSoC.
 
+__Other Commitments__
+
+None. I understand GSoC is a full time project and any other work parallel to project might reduce efficiency. Thus, I will keep myself focused by working with Sympy only.
+
+
 ### Post GSOC period
 
 I will continue my work in Sympy and on the stats module and work on introducing new Stochastic Processes. I would also work upon increasing robustness of the module and improving the multivariate distributions.
 
-Post GSoC, one important thing which can be changed is to make unevaluated version of `probability`. This can be understood as `Integral` which is the unevaluated version of `integrate`. `doit()` will be used to evaluate the probability explicity in this case. This approach was a result of discussion with [Mr. Fransesco Bonazzi](https://github.com/Upabjojr) and I am quite excited to work upon this.
+Post GSoC, one important thing which can be changed is to make unevaluated version of `probability`. This can be understood as `Integral` which is the unevaluated version of `integrate`. `doit()` will be used to evaluate the probability explicity in this case. This approach was a result of discussion with [Mr. Francesco Bonazzi](https://github.com/Upabjojr) and I am quite excited to work upon this.
 
 ## Contributions to Sympy
 ### Pull requests
@@ -596,6 +600,8 @@ The following are the lists of merged/open pull requests I have created(listed i
 * [#16461](https://github.com/sympy/sympy/pull/16461) Stats: Restored changes in docs which were made by me in an old PR
 
 * [#16473](https://github.com/sympy/sympy/pull/16473) Caculus: Added functions `stationary_points`, `minimize`, `maximize` which are used frequently in calculus.
+
+* [#16542](https://github.com/sympy/sympy/pull/16542) Stats: Added `quantile` function to `rv_interface` to compute quantile of a given distribution
 
 ### Issues opened
 The following are the list of the issues opened by me(listed in chronological order)
