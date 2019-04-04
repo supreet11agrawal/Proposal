@@ -626,6 +626,8 @@ Code reviewing is one of the important tasks which helps new contributors learn 
 
 * [#16325](https://github.com/sympy/sympy/pull/16325#pullrequestreview-215960157) An assertion statement was giving error. Suggested how to write it correctly.
 
+* [#16502](https://github.com/sympy/sympy/pull/16502#pullrequestreview-220839140) Suggested to simpify constants to avoid assertion errors on Python2.7
+
 ## References
 * [Sympy docs](https://docs.sympy.org/latest/index.html)
 
