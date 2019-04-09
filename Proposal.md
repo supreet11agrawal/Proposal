@@ -603,6 +603,10 @@ The following are the lists of merged/open pull requests I have created(listed i
 
 * [#16542](https://github.com/sympy/sympy/pull/16542) Stats: Added `quantile` function to `rv_interface` to compute quantile of a given distribution
 
+* [#16593](https://github.com/sympy/sympy/pull/16593) Stats: Added custom set support for JointRV and the PR will
+contain improvement of JointPSpace in stats/joint_rv.py. This PR is related to the
+2nd stage of GSoC project.
+
 ### Issues opened
 The following are the list of the issues opened by me(listed in chronological order)
 
